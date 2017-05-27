@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="PlayerSDK">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/AndroidVideoSDKDemoV3/libs/PlayerSDK.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

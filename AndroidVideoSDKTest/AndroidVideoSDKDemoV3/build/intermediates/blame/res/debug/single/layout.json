@@ -1,0 +1,26 @@
+[
+    {
+        "merged": "D:\\git\\monitorGit\\AndroidVideoSDKTest\\AndroidVideoSDKDemoV3\\build\\intermediates\\res\\merged\\debug\\layout\\play_back.xml",
+        "source": "D:\\git\\monitorGit\\AndroidVideoSDKTest\\AndroidVideoSDKDemoV3\\src\\main\\res\\layout\\play_back.xml"
+    },
+    {
+        "merged": "D:\\git\\monitorGit\\AndroidVideoSDKTest\\AndroidVideoSDKDemoV3\\build\\intermediates\\res\\merged\\debug\\layout\\resource.xml",
+        "source": "D:\\git\\monitorGit\\AndroidVideoSDKTest\\AndroidVideoSDKDemoV3\\src\\main\\res\\layout\\resource.xml"
+    },
+    {
+        "merged": "D:\\git\\monitorGit\\AndroidVideoSDKTest\\AndroidVideoSDKDemoV3\\build\\intermediates\\res\\merged\\debug\\layout\\ctrl_unit_list.xml",
+        "source": "D:\\git\\monitorGit\\AndroidVideoSDKTest\\AndroidVideoSDKDemoV3\\src\\main\\res\\layout\\ctrl_unit_list.xml"
+    },
+    {
+        "merged": "D:\\git\\monitorGit\\AndroidVideoSDKTest\\AndroidVideoSDKDemoV3\\build\\intermediates\\res\\merged\\debug\\layout\\activity_login.xml",
+        "source": "D:\\git\\monitorGit\\AndroidVideoSDKTest\\AndroidVideoSDKDemoV3\\src\\main\\res\\layout\\activity_login.xml"
+    },
+    {
+        "merged": "D:\\git\\monitorGit\\AndroidVideoSDKTest\\AndroidVideoSDKDemoV3\\build\\intermediates\\res\\merged\\debug\\layout\\live.xml",
+        "source": "D:\\git\\monitorGit\\AndroidVideoSDKTest\\AndroidVideoSDKDemoV3\\src\\main\\res\\layout\\live.xml"
+    },
+    {
+        "merged": "D:\\git\\monitorGit\\AndroidVideoSDKTest\\AndroidVideoSDKDemoV3\\build\\intermediates\\res\\merged\\debug\\layout\\simple_item_layout.xml",
+        "source": "D:\\git\\monitorGit\\AndroidVideoSDKTest\\AndroidVideoSDKDemoV3\\src\\main\\res\\layout\\simple_item_layout.xml"
+    }
+]

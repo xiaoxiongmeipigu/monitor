@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="vmsnetsdk">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/AndroidVideoSDKDemoV3/libs/vmsnetsdk.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

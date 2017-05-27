@@ -1,0 +1,386 @@
+[
+    {
+        "merged": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\res\\merged\\debug\\layout\\item_link.xml",
+        "source": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\src\\main\\res\\layout\\item_link.xml"
+    },
+    {
+        "merged": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\res\\merged\\debug\\layout\\select_dialog_multichoice_material.xml",
+        "source": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\layout\\select_dialog_multichoice_material.xml"
+    },
+    {
+        "merged": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\res\\merged\\debug\\layout\\dialog_alert.xml",
+        "source": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\src\\main\\res\\layout\\dialog_alert.xml"
+    },
+    {
+        "merged": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\res\\merged\\debug\\layout\\item_news.xml",
+        "source": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\src\\main\\res\\layout\\item_news.xml"
+    },
+    {
+        "merged": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\res\\merged\\debug\\layout\\abc_search_view.xml",
+        "source": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\layout\\abc_search_view.xml"
+    },
+    {
+        "merged": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\res\\merged\\debug\\layout\\dialog_customprogress.xml",
+        "source": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\src\\main\\res\\layout\\dialog_customprogress.xml"
+    },
+    {
+        "merged": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\res\\merged\\debug\\layout\\include_pickerview_topbar.xml",
+        "source": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\exploded-aar\\com.bigkoo\\pickerview\\2.1.0\\res\\layout\\include_pickerview_topbar.xml"
+    },
+    {
+        "merged": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\res\\merged\\debug\\layout\\design_navigation_item_subheader.xml",
+        "source": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\exploded-aar\\com.android.support\\design\\23.4.0\\res\\layout\\design_navigation_item_subheader.xml"
+    },
+    {
+        "merged": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\res\\merged\\debug\\layout\\design_layout_snackbar.xml",
+        "source": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\exploded-aar\\com.android.support\\design\\23.4.0\\res\\layout\\design_layout_snackbar.xml"
+    },
+    {
+        "merged": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\res\\merged\\debug\\layout\\layout_shop_slider.xml",
+        "source": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\src\\main\\res\\layout\\layout_shop_slider.xml"
+    },
+    {
+        "merged": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\res\\merged\\debug\\layout\\activity_shop_desc.xml",
+        "source": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\src\\main\\res\\layout\\activity_shop_desc.xml"
+    },
+    {
+        "merged": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_part_chronometer.xml",
+        "source": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\layout\\notification_template_part_chronometer.xml"
+    },
+    {
+        "merged": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\res\\merged\\debug\\layout\\crop__layout_done_cancel.xml",
+        "source": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\exploded-aar\\com.soundcloud.android\\android-crop\\1.0.1\\res\\layout\\crop__layout_done_cancel.xml"
+    },
+    {
+        "merged": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\res\\merged\\debug\\layout\\layout_home_slider.xml",
+        "source": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\src\\main\\res\\layout\\layout_home_slider.xml"
+    },
+    {
+        "merged": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\res\\merged\\debug\\layout\\abc_alert_dialog_material.xml",
+        "source": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\layout\\abc_alert_dialog_material.xml"
+    },
+    {
+        "merged": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_part_time.xml",
+        "source": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\layout\\notification_template_part_time.xml"
+    },
+    {
+        "merged": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\res\\merged\\debug\\layout\\activity_shop_detail.xml",
+        "source": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\src\\main\\res\\layout\\activity_shop_detail.xml"
+    },
+    {
+        "merged": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\res\\merged\\debug\\layout\\abc_activity_chooser_view_list_item.xml",
+        "source": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\layout\\abc_activity_chooser_view_list_item.xml"
+    },
+    {
+        "merged": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\res\\merged\\debug\\layout\\abc_list_menu_item_icon.xml",
+        "source": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\layout\\abc_list_menu_item_icon.xml"
+    },
+    {
+        "merged": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\res\\merged\\debug\\layout\\layout_basepickerview.xml",
+        "source": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\exploded-aar\\com.bigkoo\\pickerview\\2.1.0\\res\\layout\\layout_basepickerview.xml"
+    },
+    {
+        "merged": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\res\\merged\\debug\\layout\\notification_media_cancel_action.xml",
+        "source": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\layout\\notification_media_cancel_action.xml"
+    },
+    {
+        "merged": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\res\\merged\\debug\\layout\\item_news_date.xml",
+        "source": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\src\\main\\res\\layout\\item_news_date.xml"
+    },
+    {
+        "merged": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_company.xml",
+        "source": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\src\\main\\res\\layout\\fragment_company.xml"
+    },
+    {
+        "merged": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\res\\merged\\debug\\layout\\play_back.xml",
+        "source": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\src\\main\\res\\layout\\play_back.xml"
+    },
+    {
+        "merged": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\res\\merged\\debug\\layout\\design_navigation_item_separator.xml",
+        "source": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\exploded-aar\\com.android.support\\design\\23.4.0\\res\\layout\\design_navigation_item_separator.xml"
+    },
+    {
+        "merged": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\res\\merged\\debug\\layout\\item_news_item.xml",
+        "source": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\src\\main\\res\\layout\\item_news_item.xml"
+    },
+    {
+        "merged": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_media.xml",
+        "source": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\layout\\notification_template_media.xml"
+    },
+    {
+        "merged": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\res\\merged\\debug\\layout\\design_navigation_menu.xml",
+        "source": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\exploded-aar\\com.android.support\\design\\23.4.0\\res\\layout\\design_navigation_menu.xml"
+    },
+    {
+        "merged": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_bar_view_list_nav_layout.xml",
+        "source": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\layout\\abc_action_bar_view_list_nav_layout.xml"
+    },
+    {
+        "merged": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\res\\merged\\debug\\layout\\abc_popup_menu_item_layout.xml",
+        "source": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\layout\\abc_popup_menu_item_layout.xml"
+    },
+    {
+        "merged": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\res\\merged\\debug\\layout\\abc_activity_chooser_view.xml",
+        "source": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\layout\\abc_activity_chooser_view.xml"
+    },
+    {
+        "merged": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\res\\merged\\debug\\layout\\select_dialog_singlechoice_material.xml",
+        "source": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\layout\\select_dialog_singlechoice_material.xml"
+    },
+    {
+        "merged": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\res\\merged\\debug\\layout\\design_layout_tab_text.xml",
+        "source": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\exploded-aar\\com.android.support\\design\\23.4.0\\res\\layout\\design_layout_tab_text.xml"
+    },
+    {
+        "merged": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\res\\merged\\debug\\layout\\abc_list_menu_item_layout.xml",
+        "source": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\layout\\abc_list_menu_item_layout.xml"
+    },
+    {
+        "merged": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\res\\merged\\debug\\layout\\live.xml",
+        "source": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\src\\main\\res\\layout\\live.xml"
+    },
+    {
+        "merged": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\res\\merged\\debug\\layout\\abc_screen_content_include.xml",
+        "source": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\layout\\abc_screen_content_include.xml"
+    },
+    {
+        "merged": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\res\\merged\\debug\\layout\\act_download_dialog.xml",
+        "source": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\exploded-aar\\com.github.xiaoxiongmeipigu\\VersionUpdate-master\\1.0.1\\res\\layout\\act_download_dialog.xml"
+    },
+    {
+        "merged": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\res\\merged\\debug\\layout\\design_bottom_sheet_dialog.xml",
+        "source": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\exploded-aar\\com.android.support\\design\\23.4.0\\res\\layout\\design_bottom_sheet_dialog.xml"
+    },
+    {
+        "merged": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\res\\merged\\debug\\layout\\dialog_photo.xml",
+        "source": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\src\\main\\res\\layout\\dialog_photo.xml"
+    },
+    {
+        "merged": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\res\\merged\\debug\\layout\\design_navigation_menu_item.xml",
+        "source": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\exploded-aar\\com.android.support\\design\\23.4.0\\res\\layout\\design_navigation_menu_item.xml"
+    },
+    {
+        "merged": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_menu_layout.xml",
+        "source": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\layout\\abc_action_menu_layout.xml"
+    },
+    {
+        "merged": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\res\\merged\\debug\\layout\\layout_draweeview.xml",
+        "source": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\src\\main\\res\\layout\\layout_draweeview.xml"
+    },
+    {
+        "merged": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\res\\merged\\debug\\layout\\notification_media_action.xml",
+        "source": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\layout\\notification_media_action.xml"
+    },
+    {
+        "merged": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_mode_bar.xml",
+        "source": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\layout\\abc_action_mode_bar.xml"
+    },
+    {
+        "merged": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\res\\merged\\debug\\layout\\simple_item_layout.xml",
+        "source": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\src\\main\\res\\layout\\simple_item_layout.xml"
+    },
+    {
+        "merged": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_big_media_narrow.xml",
+        "source": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\layout\\notification_template_big_media_narrow.xml"
+    },
+    {
+        "merged": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\res\\merged\\debug\\layout\\layout_service_basic.xml",
+        "source": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\src\\main\\res\\layout\\layout_service_basic.xml"
+    },
+    {
+        "merged": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\res\\merged\\debug\\layout\\resource.xml",
+        "source": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\src\\main\\res\\layout\\resource.xml"
+    },
+    {
+        "merged": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\res\\merged\\debug\\layout\\design_navigation_item_header.xml",
+        "source": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\exploded-aar\\com.android.support\\design\\23.4.0\\res\\layout\\design_navigation_item_header.xml"
+    },
+    {
+        "merged": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\res\\merged\\debug\\layout\\abc_list_menu_item_radio.xml",
+        "source": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\layout\\abc_list_menu_item_radio.xml"
+    },
+    {
+        "merged": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\res\\merged\\debug\\layout\\lay_home_slider.xml",
+        "source": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\src\\main\\res\\layout\\lay_home_slider.xml"
+    },
+    {
+        "merged": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\res\\merged\\debug\\layout\\lay_header.xml",
+        "source": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\src\\main\\res\\layout\\lay_header.xml"
+    },
+    {
+        "merged": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\res\\merged\\debug\\layout\\item_pop_item.xml",
+        "source": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\src\\main\\res\\layout\\item_pop_item.xml"
+    },
+    {
+        "merged": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\res\\merged\\debug\\layout\\design_layout_tab_icon.xml",
+        "source": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\exploded-aar\\com.android.support\\design\\23.4.0\\res\\layout\\design_layout_tab_icon.xml"
+    },
+    {
+        "merged": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\res\\merged\\debug\\layout\\design_layout_snackbar_include.xml",
+        "source": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\exploded-aar\\com.android.support\\design\\23.4.0\\res\\layout\\design_layout_snackbar_include.xml"
+    },
+    {
+        "merged": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\res\\merged\\debug\\layout\\layout_service_service.xml",
+        "source": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\src\\main\\res\\layout\\layout_service_service.xml"
+    },
+    {
+        "merged": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\res\\merged\\debug\\layout\\activity_link.xml",
+        "source": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\src\\main\\res\\layout\\activity_link.xml"
+    },
+    {
+        "merged": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\res\\merged\\debug\\layout\\act_webview.xml",
+        "source": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\src\\main\\res\\layout\\act_webview.xml"
+    },
+    {
+        "merged": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\res\\merged\\debug\\layout\\layout_service_first.xml",
+        "source": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\src\\main\\res\\layout\\layout_service_first.xml"
+    },
+    {
+        "merged": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_menu_item_layout.xml",
+        "source": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\layout\\abc_action_menu_item_layout.xml"
+    },
+    {
+        "merged": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\res\\merged\\debug\\layout\\abc_expanded_menu_layout.xml",
+        "source": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\layout\\abc_expanded_menu_layout.xml"
+    },
+    {
+        "merged": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\res\\merged\\debug\\layout\\activity_feedback.xml",
+        "source": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\src\\main\\res\\layout\\activity_feedback.xml"
+    },
+    {
+        "merged": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\res\\merged\\debug\\layout\\design_navigation_item.xml",
+        "source": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\exploded-aar\\com.android.support\\design\\23.4.0\\res\\layout\\design_navigation_item.xml"
+    },
+    {
+        "merged": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\res\\merged\\debug\\layout\\ctrl_unit_list.xml",
+        "source": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\src\\main\\res\\layout\\ctrl_unit_list.xml"
+    },
+    {
+        "merged": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_big_media.xml",
+        "source": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\layout\\notification_template_big_media.xml"
+    },
+    {
+        "merged": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\res\\merged\\debug\\layout\\abc_screen_simple_overlay_action_mode.xml",
+        "source": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\layout\\abc_screen_simple_overlay_action_mode.xml"
+    },
+    {
+        "merged": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\res\\merged\\debug\\layout\\pop_item.xml",
+        "source": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\src\\main\\res\\layout\\pop_item.xml"
+    },
+    {
+        "merged": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_mode_close_item_material.xml",
+        "source": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\layout\\abc_action_mode_close_item_material.xml"
+    },
+    {
+        "merged": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\res\\merged\\debug\\layout\\abc_screen_toolbar.xml",
+        "source": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\layout\\abc_screen_toolbar.xml"
+    },
+    {
+        "merged": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\res\\merged\\debug\\layout\\select_dialog_item_material.xml",
+        "source": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\layout\\select_dialog_item_material.xml"
+    },
+    {
+        "merged": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\res\\merged\\debug\\layout\\design_menu_item_action_area.xml",
+        "source": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\exploded-aar\\com.android.support\\design\\23.4.0\\res\\layout\\design_menu_item_action_area.xml"
+    },
+    {
+        "merged": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_lines.xml",
+        "source": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\layout\\notification_template_lines.xml"
+    },
+    {
+        "merged": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\res\\merged\\debug\\layout\\dialog_share.xml",
+        "source": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\src\\main\\res\\layout\\dialog_share.xml"
+    },
+    {
+        "merged": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_news.xml",
+        "source": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\src\\main\\res\\layout\\fragment_news.xml"
+    },
+    {
+        "merged": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\res\\merged\\debug\\layout\\activity_shops.xml",
+        "source": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\src\\main\\res\\layout\\activity_shops.xml"
+    },
+    {
+        "merged": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\res\\merged\\debug\\layout\\abc_list_menu_item_checkbox.xml",
+        "source": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\layout\\abc_list_menu_item_checkbox.xml"
+    },
+    {
+        "merged": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_bar_title_item.xml",
+        "source": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\layout\\abc_action_bar_title_item.xml"
+    },
+    {
+        "merged": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\res\\merged\\debug\\layout\\abc_select_dialog_material.xml",
+        "source": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\layout\\abc_select_dialog_material.xml"
+    },
+    {
+        "merged": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\res\\merged\\debug\\layout\\act_download_notification.xml",
+        "source": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\exploded-aar\\com.github.xiaoxiongmeipigu\\VersionUpdate-master\\1.0.1\\res\\layout\\act_download_notification.xml"
+    },
+    {
+        "merged": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\res\\merged\\debug\\layout\\abc_alert_dialog_button_bar_material.xml",
+        "source": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\layout\\abc_alert_dialog_button_bar_material.xml"
+    },
+    {
+        "merged": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\res\\merged\\debug\\layout\\activity_login.xml",
+        "source": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\src\\main\\res\\layout\\activity_login.xml"
+    },
+    {
+        "merged": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\res\\merged\\debug\\layout\\abc_search_dropdown_item_icons_2line.xml",
+        "source": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\layout\\abc_search_dropdown_item_icons_2line.xml"
+    },
+    {
+        "merged": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\res\\merged\\debug\\layout\\pickerview_time.xml",
+        "source": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\exploded-aar\\com.bigkoo\\pickerview\\2.1.0\\res\\layout\\pickerview_time.xml"
+    },
+    {
+        "merged": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\res\\merged\\debug\\layout\\activity_main.xml",
+        "source": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\src\\main\\res\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\res\\merged\\debug\\layout\\crop__activity_crop.xml",
+        "source": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\exploded-aar\\com.soundcloud.android\\android-crop\\1.0.1\\res\\layout\\crop__activity_crop.xml"
+    },
+    {
+        "merged": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\res\\merged\\debug\\layout\\item_divider_background_hight_eight.xml",
+        "source": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\src\\main\\res\\layout\\item_divider_background_hight_eight.xml"
+    },
+    {
+        "merged": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_bar_up_container.xml",
+        "source": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\layout\\abc_action_bar_up_container.xml"
+    },
+    {
+        "merged": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\res\\merged\\debug\\layout\\abc_dialog_title_material.xml",
+        "source": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\layout\\abc_dialog_title_material.xml"
+    },
+    {
+        "merged": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\res\\merged\\debug\\layout\\support_simple_spinner_dropdown_item.xml",
+        "source": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\layout\\support_simple_spinner_dropdown_item.xml"
+    },
+    {
+        "merged": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\res\\merged\\debug\\layout\\dialog_loading.xml",
+        "source": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\src\\main\\res\\layout\\dialog_loading.xml"
+    },
+    {
+        "merged": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\res\\merged\\debug\\layout\\abc_screen_simple.xml",
+        "source": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\layout\\abc_screen_simple.xml"
+    },
+    {
+        "merged": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\res\\merged\\debug\\layout\\activity_news.xml",
+        "source": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\src\\main\\res\\layout\\activity_news.xml"
+    },
+    {
+        "merged": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\res\\merged\\debug\\layout\\act_update_dialog.xml",
+        "source": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\exploded-aar\\com.github.xiaoxiongmeipigu\\VersionUpdate-master\\1.0.1\\res\\layout\\act_update_dialog.xml"
+    },
+    {
+        "merged": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\res\\merged\\debug\\layout\\activity_code.xml",
+        "source": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\src\\main\\res\\layout\\activity_code.xml"
+    },
+    {
+        "merged": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\res\\merged\\debug\\layout\\item_shops.xml",
+        "source": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\src\\main\\res\\layout\\item_shops.xml"
+    },
+    {
+        "merged": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\res\\merged\\debug\\layout\\pickerview_options.xml",
+        "source": "D:\\git\\monitorGit\\AndroidVideoSDKDemoV3Studio\\AndroidVideoSDKDemoV3\\build\\intermediates\\exploded-aar\\com.bigkoo\\pickerview\\2.1.0\\res\\layout\\pickerview_options.xml"
+    }
+]

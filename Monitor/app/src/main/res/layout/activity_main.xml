@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.zjhj.monitor.activity.MainActivity">
+
+    <include
+        layout="@layout/lay_header"
+        />
+
+
+    <com.zjhj.monitor.view.HomeSliderLayout
+        android:id="@+id/homeSliderLayout"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_below="@+id/lay_header"
+        ></com.zjhj.monitor.view.HomeSliderLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_below="@+id/homeSliderLayout"
+        android:layout_above="@+id/bottom_ll"
+        >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:text="最新动态"
+            android:textColor="@color/light_black"
+            android:textSize="@dimen/text_normal"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/margin_2"
+            android:background="@color/background_gray"
+            />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="vertical"
+            ></android.support.v7.widget.RecyclerView>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/bottom_ll"
+        android:layout_width="match_parent"
+        android:layout_height="100.5dp"
+        android:orientation="vertical"
+        android:layout_alignParentBottom="true"
+        >
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/divider_line"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            >
+
+            <LinearLayout
+                android:id="@+id/news_ll"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:gravity="center"
+                >
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/news_logo"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/shop_black"
+                    android:textSize="@dimen/text_normal"
+                    android:text="市监动态"
+                    android:layout_marginTop="6dp"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/monitor_ll"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:gravity="center"
+                >
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/monitor_logo"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/shop_black"
+                    android:textSize="@dimen/text_normal"
+                    android:text="透明厨房"
+                    android:layout_marginTop="6dp"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/link_ll"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:gravity="center"
+                >
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/link_logo"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/shop_black"
+                    android:textSize="@dimen/text_normal"
+                    android:text="常用链接"
+                    android:layout_marginTop="6dp"
+                    />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

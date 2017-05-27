@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="D:\git\monitorGit\AndroidVideoSDKTest\AndroidVideoSDKDemoV3\libs\MCRSDK.jar"
+        jumboMode="false"
+        revision="23.0.3"
+        sha1="eb4094212801189f09dd6815febdb1bfe3744646">
+        <dex dex="D:\git\monitorGit\AndroidVideoSDKTest\AndroidVideoSDKDemoV3\build\intermediates\pre-dexed\debug\MCRSDK_ba608a505365a819acaea2f65f76ce62ede87a84.jar" />
+    </item>
+    <item
+        jar="D:\git\monitorGit\AndroidVideoSDKTest\AndroidVideoSDKDemoV3\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\jars\libs\internal_impl-21.0.3.jar"
+        jumboMode="false"
+        revision="23.0.3"
+        sha1="01ec05bfbafcc07646ba813000bf2ef11742dd03">
+        <dex dex="D:\git\monitorGit\AndroidVideoSDKTest\AndroidVideoSDKDemoV3\build\intermediates\pre-dexed\debug\internal_impl-21.0.3_2310d726e8fdb1dcbb7c3fb5d57da4c6a684a6f6.jar" />
+    </item>
+    <item
+        jar="D:\git\monitorGit\AndroidVideoSDKTest\AndroidVideoSDKDemoV3\libs\PlayerSDK.jar"
+        jumboMode="false"
+        revision="23.0.3"
+        sha1="1a1bcb074dad9917dff76beb5076675969bca8be">
+        <dex dex="D:\git\monitorGit\AndroidVideoSDKTest\AndroidVideoSDKDemoV3\build\intermediates\pre-dexed\debug\PlayerSDK_2010a915bb09e1b6a1a7ad58adf6b4e4cd838921.jar" />
+    </item>
+    <item
+        jar="D:\android-sdk\extras\android\m2repository\com\android\support\support-annotations\21.0.3\support-annotations-21.0.3.jar"
+        jumboMode="false"
+        revision="23.0.3"
+        sha1="4b74cefe1f0c1b819e7260c8627a14674e37fd35">
+        <dex dex="D:\git\monitorGit\AndroidVideoSDKTest\AndroidVideoSDKDemoV3\build\intermediates\pre-dexed\debug\support-annotations-21.0.3_d468e72c8ea79625b7615186601440b8d5bb481e.jar" />
+    </item>
+    <item
+        jar="D:\git\monitorGit\AndroidVideoSDKTest\AndroidVideoSDKDemoV3\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.3"
+        sha1="2c91c949a45a21cdecf26e03951e46c7beec9ad8">
+        <dex dex="D:\git\monitorGit\AndroidVideoSDKTest\AndroidVideoSDKDemoV3\build\intermediates\pre-dexed\debug\com.android.support-support-v4-21.0.3_14a1b1ba630023413d4b948705f6c741e424ff9e.jar" />
+    </item>
+    <item
+        jar="D:\git\monitorGit\AndroidVideoSDKTest\AndroidVideoSDKDemoV3\libs\vmsnetsdk.jar"
+        jumboMode="false"
+        revision="23.0.3"
+        sha1="3eee784fbbc727b3462b886712d223cc5300c813">
+        <dex dex="D:\git\monitorGit\AndroidVideoSDKTest\AndroidVideoSDKDemoV3\build\intermediates\pre-dexed\debug\vmsnetsdk_47f22283015dbbd7e424f17541f5d2f4f92f06be.jar" />
+    </item>
+
+</items>

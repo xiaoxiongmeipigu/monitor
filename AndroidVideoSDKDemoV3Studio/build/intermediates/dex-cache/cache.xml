@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="D:\git\monitorGit\AndroidVideoSDKDemoV3Studio\AndroidVideoSDKDemoV3\build\intermediates\exploded-aar\com.github.xiaoxiongmeipigu\VersionUpdate-master\1.0.1\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.3"
+        sha1="62213057088a1cf64f829be4d86be7974e84480c">
+        <dex dex="D:\git\monitorGit\AndroidVideoSDKDemoV3Studio\AndroidVideoSDKDemoV3\build\intermediates\pre-dexed\debug\com.github.xiaoxiongmeipigu-VersionUpdate-master-1.0.1_c9c8bd2deadf9b0d60be36705eaa55bbb85c50c5.jar" />
+    </item>
+    <item
+        jar="D:\git\monitorGit\AndroidVideoSDKDemoV3Studio\AndroidVideoSDKDemoV3\libs\PlayerSDK.jar"
+        jumboMode="false"
+        revision="23.0.3"
+        sha1="1a1bcb074dad9917dff76beb5076675969bca8be">
+        <dex dex="D:\git\monitorGit\AndroidVideoSDKDemoV3Studio\AndroidVideoSDKDemoV3\build\intermediates\pre-dexed\debug\PlayerSDK_57c54c4b391b06696f824d3ed809f5dc5edce69c.jar" />
+    </item>
+    <item
+        jar="D:\git\monitorGit\AndroidVideoSDKDemoV3Studio\AndroidVideoSDKDemoV3\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.4.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.3"
+        sha1="548f06de403a9409f00554b3ee12a9fdea0e236c">
+        <dex dex="D:\git\monitorGit\AndroidVideoSDKDemoV3Studio\AndroidVideoSDKDemoV3\build\intermediates\pre-dexed\debug\com.android.support-appcompat-v7-23.4.0_58311888b8b06af73ba79fc29a7e7e73195fbef8.jar" />
+    </item>
+    <item
+        jar="D:\git\monitorGit\AndroidVideoSDKDemoV3Studio\AndroidVideoSDKDemoV3\build\intermediates\exploded-aar\com.facebook.fresco\imagepipeline-base\0.12.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.3"
+        sha1="c9a86e6bc8300fc00c191949ac61a2f7165e35c7">
+        <dex dex="D:\git\monitorGit\AndroidVideoSDKDemoV3Studio\AndroidVideoSDKDemoV3\build\intermediates\pre-dexed\debug\com.facebook.fresco-imagepipeline-base-0.12.0_f556c1cb1e47c896db2d2fdf8524989bcf03191f.jar" />
+    </item>
+    <item
+        jar="C:\Users\哩哩啦啦\.gradle\caches\modules-2\files-2.1\com.parse.bolts\bolts-tasks\1.4.0\d85884acf6810a3bbbecb587f239005cbc846dc4\bolts-tasks-1.4.0.jar"
+        jumboMode="false"
+        revision="23.0.3"
+        sha1="d85884acf6810a3bbbecb587f239005cbc846dc4">
+        <dex dex="D:\git\monitorGit\AndroidVideoSDKDemoV3Studio\AndroidVideoSDKDemoV3\build\intermediates\pre-dexed\debug\bolts-tasks-1.4.0_42ac20acc4f83836da7fd7303edf1cd9f1665466.jar" />
+    </item>
+    <item
+        jar="D:\git\monitorGit\AndroidVideoSDKDemoV3Studio\AndroidVideoSDKDemoV3\build\intermediates\exploded-aar\org.apmem.tools\layouts\1.10\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.3"
+        sha1="7a9f96bfbb71dc928a5d01440d879ef17f3f2349">
+        <dex dex="D:\git\monitorGit\AndroidVideoSDKDemoV3Studio\AndroidVideoSDKDemoV3\build\intermediates\pre-dexed\debug\org.apmem.tools-layouts-1.10_a57dc4746b534a09d30a9b452d1e0379f8b54caa.jar" />
+    </item>
+    <item
+        jar="D:\git\monitorGit\AndroidVideoSDKDemoV3Studio\AndroidVideoSDKDemoV3\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\23.4.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.3"
+        sha1="de4db3785756bfb0915a9f59a9b3f2fea7407be4">
+        <dex dex="D:\git\monitorGit\AndroidVideoSDKDemoV3Studio\AndroidVideoSDKDemoV3\build\intermediates\pre-dexed\debug\com.android.support-animated-vector-drawable-23.4.0_b97f7dae6214ea9bf7f26543c0cc4351ee6d01cb.jar" />
+    </item>
+    <item
+        jar="D:\git\monitorGit\AndroidVideoSDKDemoV3Studio\AndroidVideoSDKDemoV3\build\intermediates\exploded-aar\com.lzy.widget\view-core\0.2.3\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.3"
+        sha1="96ff7b65ca8d5a8657cebb9ffab09b711f273110">
+        <dex dex="D:\git\monitorGit\AndroidVideoSDKDemoV3Studio\AndroidVideoSDKDemoV3\build\intermediates\pre-dexed\debug\com.lzy.widget-view-core-0.2.3_388ba9fb8ec2dc70cff13f378b564941f02d6051.jar" />
+    </item>
+    <item
+        jar="D:\git\monitorGit\AndroidVideoSDKDemoV3Studio\AndroidVideoSDKDemoV3\libs\vmsnetsdk.jar"
+        jumboMode="false"
+        revision="23.0.3"
+        sha1="3eee784fbbc727b3462b886712d223cc5300c813">
+        <dex dex="D:\git\monitorGit\AndroidVideoSDKDemoV3Studio\AndroidVideoSDKDemoV3\build\intermediates\pre-dexed\debug\vmsnetsdk_f136f81c4158220072032bc3775dcd268793dc9d.jar" />
+    </item>
+    <item
+        jar="D:\android-sdk\extras\android\m2repository\com\android\support\support-annotations\23.4.0\support-annotations-23.4.0.jar"
+        jumboMode="false"
+        revision="23.0.3"
+        sha1="ffbe55fdb2bb456b1485831706a9eac3300bb6b8">
+        <dex dex="D:\git\monitorGit\AndroidVideoSDKDemoV3Studio\AndroidVideoSDKDemoV3\build\intermediates\pre-dexed\debug\support-annotations-23.4.0_0b5b7c2eab8afef5a0d4f84f4adb566bc4c58e7d.jar" />
+    </item>
+    <item
+        jar="D:\git\monitorGit\AndroidVideoSDKDemoV3Studio\AndroidVideoSDKDemoV3\libs\gson-2.2.4.jar"
+        jumboMode="false"
+        revision="23.0.3"
+        sha1="973e832af433b44c3ed11c426f2f390b29f3f3f8">
+        <dex dex="D:\git\monitorGit\AndroidVideoSDKDemoV3Studio\AndroidVideoSDKDemoV3\build\intermediates\pre-dexed\debug\gson-2.2.4_295bd7e03fb5e3151bebdacb146f702d1cb99383.jar" />
+    </item>
+    <item
+        jar="D:\git\monitorGit\AndroidVideoSDKDemoV3Studio\AndroidVideoSDKDemoV3\libs\MCRSDK.jar"
+        jumboMode="false"
+        revision="23.0.3"
+        sha1="eb4094212801189f09dd6815febdb1bfe3744646">
+        <dex dex="D:\git\monitorGit\AndroidVideoSDKDemoV3Studio\AndroidVideoSDKDemoV3\build\intermediates\pre-dexed\debug\MCRSDK_f3437ab702159a8488aa25e39f8d00861fc3f929.jar" />
+    </item>
+    <item
+        jar="D:\git\monitorGit\AndroidVideoSDKDemoV3Studio\AndroidVideoSDKDemoV3\build\intermediates\exploded-aar\com.android.support\design\23.4.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.3"
+        sha1="5326d9a850d491714fef8cbfaa9ea3416f0bf0d2">
+        <dex dex="D:\git\monitorGit\AndroidVideoSDKDemoV3Studio\AndroidVideoSDKDemoV3\build\intermediates\pre-dexed\debug\com.android.support-design-23.4.0_59d2fcf14984760f16706fd1724d4d5d15280e2f.jar" />
+    </item>
+    <item
+        jar="D:\git\monitorGit\AndroidVideoSDKDemoV3Studio\AndroidVideoSDKDemoV3\libs\fastjson-1.2.7.jar"
+        jumboMode="false"
+        revision="23.0.3"
+        sha1="a5c721e8ea1e18854272879d6ed2770d25feb342">
+        <dex dex="D:\git\monitorGit\AndroidVideoSDKDemoV3Studio\AndroidVideoSDKDemoV3\build\intermediates\pre-dexed\debug\fastjson-1.2.7_3ad9b024700fcc8687fbae465b797fe7ada4fe05.jar" />
+    </item>
+    <item
+        jar="D:\git\monitorGit\AndroidVideoSDKDemoV3Studio\AndroidVideoSDKDemoV3\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\jars\libs\internal_impl-23.4.0.jar"
+        jumboMode="false"
+        revision="23.0.3"
+        sha1="ea3c07504d2c8f4b13aa17c45c1b68ed9c1c3674">
+        <dex dex="D:\git\monitorGit\AndroidVideoSDKDemoV3Studio\AndroidVideoSDKDemoV3\build\intermediates\pre-dexed\debug\internal_impl-23.4.0_261bbb6775f6d007459e47ec5593a36766e9c521.jar" />
+    </item>
+    <item
+        jar="D:\git\monitorGit\AndroidVideoSDKDemoV3Studio\AndroidVideoSDKDemoV3\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.3"
+        sha1="67bd36ee9340ec7c254108936ad16b24bed160cc">
+        <dex dex="D:\git\monitorGit\AndroidVideoSDKDemoV3Studio\AndroidVideoSDKDemoV3\build\intermediates\pre-dexed\debug\com.android.support-support-v4-23.4.0_e7ff8a6e3a723eeb24a04f81d7e907c7de2160ab.jar" />
+    </item>
+    <item
+        jar="D:\git\monitorGit\AndroidVideoSDKDemoV3Studio\AndroidVideoSDKDemoV3\build\intermediates\exploded-aar\com.bigkoo\pickerview\2.1.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.3"
+        sha1="785e7795aa8c3df729ae5d6bb6fc7e4428108332">
+        <dex dex="D:\git\monitorGit\AndroidVideoSDKDemoV3Studio\AndroidVideoSDKDemoV3\build\intermediates\pre-dexed\debug\com.bigkoo-pickerview-2.1.0_819c0d318e39ebe42efa27b58def87137fde9277.jar" />
+    </item>
+    <item
+        jar="C:\Users\哩哩啦啦\.gradle\caches\modules-2\files-2.1\com.jakewharton\butterknife\7.0.1\d5d13ea991eab0252e3710e5df3d6a9d4b21d461\butterknife-7.0.1.jar"
+        jumboMode="false"
+        revision="23.0.3"
+        sha1="d5d13ea991eab0252e3710e5df3d6a9d4b21d461">
+        <dex dex="D:\git\monitorGit\AndroidVideoSDKDemoV3Studio\AndroidVideoSDKDemoV3\build\intermediates\pre-dexed\debug\butterknife-7.0.1_bf7fbd35c8e1c371ef7f5ad28d7fb0b2c7fc6bfc.jar" />
+    </item>
+    <item
+        jar="D:\git\monitorGit\AndroidVideoSDKDemoV3Studio\AndroidVideoSDKDemoV3\build\intermediates\exploded-aar\com.facebook.fresco\fbcore\0.12.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.3"
+        sha1="40e5cb8708fc25fe57cb403cc82e9ef98376b648">
+        <dex dex="D:\git\monitorGit\AndroidVideoSDKDemoV3Studio\AndroidVideoSDKDemoV3\build\intermediates\pre-dexed\debug\com.facebook.fresco-fbcore-0.12.0_d9fc0204aa5c2dc701b87f9e58067bdb05f05e97.jar" />
+    </item>
+    <item
+        jar="D:\git\monitorGit\AndroidVideoSDKDemoV3Studio\AndroidVideoSDKDemoV3\build\intermediates\exploded-aar\com.github.iwgang\countdownview\2.1.3\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.3"
+        sha1="822c1ca67975c7795533d9b2ae195e34d8ef4933">
+        <dex dex="D:\git\monitorGit\AndroidVideoSDKDemoV3Studio\AndroidVideoSDKDemoV3\build\intermediates\pre-dexed\debug\com.github.iwgang-countdownview-2.1.3_415f170f7768b5035d0a75057a750ccae1373763.jar" />
+    </item>
+    <item
+        jar="C:\Users\哩哩啦啦\.gradle\caches\modules-2\files-2.1\com.nineoldandroids\library\2.4.0\e9b63380f3a242dbdbf103a2355ad7e43bad17cb\library-2.4.0.jar"
+        jumboMode="false"
+        revision="23.0.3"
+        sha1="e9b63380f3a242dbdbf103a2355ad7e43bad17cb">
+        <dex dex="D:\git\monitorGit\AndroidVideoSDKDemoV3Studio\AndroidVideoSDKDemoV3\build\intermediates\pre-dexed\debug\library-2.4.0_fd9e190eecdbd62ec24a489580cbd2612d72e6d3.jar" />
+    </item>
+    <item
+        jar="D:\git\monitorGit\AndroidVideoSDKDemoV3Studio\AndroidVideoSDKDemoV3\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\23.4.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.3"
+        sha1="c2c594cace5d83a3227b2b6e658ecbfd586d3ed9">
+        <dex dex="D:\git\monitorGit\AndroidVideoSDKDemoV3Studio\AndroidVideoSDKDemoV3\build\intermediates\pre-dexed\debug\com.android.support-support-vector-drawable-23.4.0_5c78c26ea397dbc4a9b20576001c58aaf6a2b691.jar" />
+    </item>
+    <item
+        jar="D:\git\monitorGit\AndroidVideoSDKDemoV3Studio\AndroidVideoSDKDemoV3\build\intermediates\exploded-aar\com.facebook.fresco\drawee\0.12.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.3"
+        sha1="1e346707e4770db216049a532ab3eb5e317cf82a">
+        <dex dex="D:\git\monitorGit\AndroidVideoSDKDemoV3Studio\AndroidVideoSDKDemoV3\build\intermediates\pre-dexed\debug\com.facebook.fresco-drawee-0.12.0_46fc6b21c5fd7e0956337514232607755457fc6d.jar" />
+    </item>
+    <item
+        jar="D:\git\monitorGit\AndroidVideoSDKDemoV3Studio\AndroidVideoSDKDemoV3\build\intermediates\exploded-aar\com.facebook.fresco\imagepipeline\0.12.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.3"
+        sha1="145da27a459a63ea0c4e318930365cf0a8b8e891">
+        <dex dex="D:\git\monitorGit\AndroidVideoSDKDemoV3Studio\AndroidVideoSDKDemoV3\build\intermediates\pre-dexed\debug\com.facebook.fresco-imagepipeline-0.12.0_3cc2ca2f121cac8372681e0a63d8e8dfa69edad7.jar" />
+    </item>
+    <item
+        jar="D:\git\monitorGit\AndroidVideoSDKDemoV3Studio\AndroidVideoSDKDemoV3\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\23.4.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.3"
+        sha1="ec75036c3c52e451d0cde50a5aedaf5fd32354a0">
+        <dex dex="D:\git\monitorGit\AndroidVideoSDKDemoV3Studio\AndroidVideoSDKDemoV3\build\intermediates\pre-dexed\debug\com.android.support-recyclerview-v7-23.4.0_049e56199a753ad18d294dced9fffba571cb94c0.jar" />
+    </item>
+    <item
+        jar="D:\git\monitorGit\AndroidVideoSDKDemoV3Studio\AndroidVideoSDKDemoV3\build\intermediates\exploded-aar\com.soundcloud.android\android-crop\1.0.1\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.3"
+        sha1="11a65cf2b30c192b38a881d626fa771a78a2293d">
+        <dex dex="D:\git\monitorGit\AndroidVideoSDKDemoV3Studio\AndroidVideoSDKDemoV3\build\intermediates\pre-dexed\debug\com.soundcloud.android-android-crop-1.0.1_c5dc65728f63ab490509c14e32c738a030dbe653.jar" />
+    </item>
+    <item
+        jar="D:\git\monitorGit\AndroidVideoSDKDemoV3Studio\AndroidVideoSDKDemoV3\build\intermediates\exploded-aar\com.facebook.fresco\fresco\0.12.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.3"
+        sha1="a540784239c611ea490593e2053a5e2890675c68">
+        <dex dex="D:\git\monitorGit\AndroidVideoSDKDemoV3Studio\AndroidVideoSDKDemoV3\build\intermediates\pre-dexed\debug\com.facebook.fresco-fresco-0.12.0_0c46b8891197fb1111b6f57f58cf00de9b969705.jar" />
+    </item>
+
+</items>
