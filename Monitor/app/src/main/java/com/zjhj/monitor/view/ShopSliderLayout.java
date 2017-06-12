@@ -3,6 +3,7 @@ package com.zjhj.monitor.view;
 import android.content.Context;
 import android.net.Uri;
 import android.support.v4.view.ViewPager;
+import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -73,16 +74,8 @@ public class ShopSliderLayout extends RelativeLayout {
             for (int i = 0; i < list.size(); i++) {
                 SimpleDraweeView view = (SimpleDraweeView) LayoutInflater.from(mContext).inflate(R.layout.layout_draweeview,null);
 
-                if(i==2){
-                    view.setImageURI(Uri.parse("res:///" +R.drawable.slider_one));
-                }else if(i==1){
-                    view.setImageURI(Uri.parse("res:///" +R.drawable.slider_one));
-                }else if(i==0){
-                    view.setImageURI(Uri.parse("res:///" +R.drawable.slider_one));
-                }
-
                 //创建将要下载的图片的URI
-               /* Uri imageUri = Uri.parse(list.get(i).getUrl());
+                Uri imageUri = Uri.parse(TextUtils.isEmpty(list.get(i).getPic_url())?"":list.get(i).getPic_url());
                 ImageRequest request = ImageRequestBuilder.newBuilderWithSource(imageUri)
                         .setResizeOptions(new ResizeOptions(DPUtil.dip2px(375), DPUtil.dip2px(160)))
                         .build();
@@ -91,8 +84,7 @@ public class ShopSliderLayout extends RelativeLayout {
                         .setOldController(view.getController())
                         .setControllerListener(new BaseControllerListener<ImageInfo>())
                         .build();
-                view.setController(controller);*/
-
+                view.setController(controller);
 
 
                 view.setOnClickListener(new OnClickListener() {

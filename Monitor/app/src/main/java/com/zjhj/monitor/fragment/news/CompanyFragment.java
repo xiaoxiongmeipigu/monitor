@@ -6,15 +6,22 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.OrientationHelper;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.zjhj.commom.api.ItemApi;
 import com.zjhj.commom.result.IndexData;
 import com.zjhj.commom.result.MapiItemResult;
+import com.zjhj.commom.util.RequestExceptionCallback;
+import com.zjhj.commom.util.RequestPageCallback;
+import com.zjhj.commom.widget.MainToast;
 import com.zjhj.monitor.R;
 import com.zjhj.monitor.adapter.news.NewsItemAdapter;
 import com.zjhj.monitor.base.BaseFrag;
+import com.zjhj.monitor.interfaces.RecyOnItemClickListener;
+import com.zjhj.monitor.util.ControllerUtil;
 import com.zjhj.monitor.widget.BestSwipeRefreshLayout;
 
 import java.util.ArrayList;
@@ -37,6 +44,10 @@ public class CompanyFragment extends BaseFrag {
     List<IndexData> mList;
 
     NewsItemAdapter mAdapter;
+
+    private Integer pageIndex = 1;
+    private Integer pageNum = 12;
+    private Integer counts;
 
     public CompanyFragment() {
         // Required empty public constructor
@@ -73,52 +84,81 @@ public class CompanyFragment extends BaseFrag {
         swipeRefreshLayout.setBestRefreshListener(new BestSwipeRefreshLayout.BestRefreshListener() {
             @Override
             public void onBestRefresh() {
-                swipeRefreshLayout.setRefreshing(false);
+                refreshData();
             }
         });
+
+        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+                LinearLayoutManager manager = (LinearLayoutManager) recyclerView.getLayoutManager();
+
+                if ((newState == RecyclerView.SCROLL_STATE_IDLE) && manager.findLastVisibleItemPosition() >= 0 && (manager.findLastVisibleItemPosition() == (manager.getItemCount() - 1))) {
+                    loadNext();
+                }
+
+            }
+
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+            }
+        });
+
+        mAdapter.setOnItemClickListener(new RecyOnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                MapiItemResult mapiItemResult = (MapiItemResult) mList.get(position).getData();
+                String url = mapiItemResult.getPost_url();
+                if(!TextUtils.isEmpty(url))
+                    ControllerUtil.go2WebView(url,"新闻详情","","","",false);
+            }
+        });
+
+    }
+
+    private void loadNext() {
+        if (counts == null || counts <= pageIndex) {
+            MainToast.showShortToast("没有更多数据了");
+            return;
+        }
+        pageIndex++;
+        load();
+    }
+
+    public void refreshData() {
+        if (null != mList) {
+            mList.clear();
+            pageIndex = 1;
+            mAdapter.notifyDataSetChanged();
+            load();
+        }
     }
 
     public void load(){
 
-        list.clear();
-
-        MapiItemResult parentOne = new MapiItemResult();
-        parentOne.setDate("2017-03-15");
-
-        List<MapiItemResult> lists = new ArrayList<>();
-
-        MapiItemResult itemResult = new MapiItemResult();
-        itemResult.setTitle("积极参与 广泛宣传 长安分局助力文明城市");
-        itemResult.setDesc("今年是创建全国文明城市攻坚年，为扩大全国文明城市创建的宣传面，营造共创美好家园的良好氛围");
-
-        MapiItemResult itemResult2 = new MapiItemResult();
-        itemResult2.setTitle("海洲所发出了辖区内首张”三小一摊“食品生产经营登记证");
-        itemResult2.setDesc("近日，海洲所发出了辖区内首张”三小一摊“食品生产经营登记证。根据2017年5月1日起施行的《浙江省食品小作坊小餐饮店小食杂店和食品摊贩管理规定》");
-        lists.add(itemResult);
-        lists.add(itemResult2);
-
-        parentOne.setList(lists);
-        list.add(parentOne);
-
-        MapiItemResult parentTwo = new MapiItemResult();
-        parentTwo.setDate("2017-02-07");
-
-        List<MapiItemResult> listsTwo = new ArrayList<>();
-
-        MapiItemResult itemResult3 = new MapiItemResult();
-        itemResult3.setTitle("袁花分局积极主动服务榨油小作坊建设");
-        itemResult3.setDesc("2017年5月1日起正式实施的《浙江省食品小作坊小餐饮店小食杂店和食品摊贩管理规定》，把");
-
-        MapiItemResult itemResult4 = new MapiItemResult();
-        itemResult4.setTitle("海宁开展食品相关产品质量安全排雷”百日攻坚");
-        itemResult4.setDesc("根据省及嘉兴市食品安全”百日攻坚“行动方案要求，结合海宁实际，海宁市市场监管局在全市范围内开展");
-        listsTwo.add(itemResult3);
-        listsTwo.add(itemResult4);
-
-        parentTwo.setList(listsTwo);
-        list.add(parentTwo);
-
-        initData(list);
+        showLoading();
+        ItemApi.postlist(getActivity(), pageIndex + "", pageNum + "", "2", new RequestPageCallback<List<MapiItemResult>>() {
+            @Override
+            public void success(Integer isNext, List<MapiItemResult> success) {
+                hideLoading();
+                swipeRefreshLayout.setRefreshing(false);
+                counts = isNext;
+                if (success.isEmpty())
+                    return;
+                list.clear();
+                list.addAll(success);
+                initData(list);
+            }
+        }, new RequestExceptionCallback() {
+            @Override
+            public void error(Integer code, String message) {
+                hideLoading();
+                swipeRefreshLayout.setRefreshing(false);
+                MainToast.showShortToast(message);
+            }
+        });
 
     }
 

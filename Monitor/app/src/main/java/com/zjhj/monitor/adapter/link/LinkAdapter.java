@@ -58,7 +58,7 @@ public class LinkAdapter extends RecyclerView.Adapter<LinkAdapter.ViewHolder> {
         });
 
         MapiResourceResult mapiResourceResult = mList.get(position);
-        holder.title.setText(TextUtils.isEmpty(mapiResourceResult.getTitle())?"":mapiResourceResult.getTitle());
+        holder.title.setText(TextUtils.isEmpty(mapiResourceResult.getName())?"":mapiResourceResult.getName());
         holder.urlTv.setText(TextUtils.isEmpty(mapiResourceResult.getUrl())?"":mapiResourceResult.getUrl());
     }
 

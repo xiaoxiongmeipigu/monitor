@@ -7,6 +7,7 @@ import android.graphics.Rect;
 import android.net.Uri;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -32,6 +33,7 @@ import com.zjhj.commom.util.DPUtil;
 import com.zjhj.commom.util.DebugLog;
 import com.zjhj.monitor.R;
 import com.zjhj.monitor.base.BaseActivity;
+import com.zjhj.monitor.util.ControllerUtil;
 import com.zjhj.monitor.util.CountDownTimerUtil;
 import com.zjhj.monitor.widget.LoopViewPager;
 
@@ -103,39 +105,6 @@ public class HomeSliderLayout extends RelativeLayout {
         if(null!=list){//&&list.size()>0
             imgs.clear();
             imgs.addAll(list);
-            /*for (int i = 0; i < list.size(); i++) {
-                SimpleDraweeView view = (SimpleDraweeView) LayoutInflater.from(mContext).inflate(R.layout.layout_draweeview,null);
-
-               *//* if(i==3){
-                    view.setImageURI(Uri.parse("res:///" +R.drawable.slider_four));
-                }else if(i==2){
-                    view.setImageURI(Uri.parse("res:///" +R.drawable.slider_three));
-                }else if(i==1){
-                    view.setImageURI(Uri.parse("res:///" +R.drawable.slider_two));
-                }else if(i==0){
-                    view.setImageURI(Uri.parse("res:///" +R.drawable.slider_one));
-                }*//*
-                //创建将要下载的图片的URI
-                Uri imageUri = Uri.parse(list.get(i).getImg());
-                ImageRequest request = ImageRequestBuilder.newBuilderWithSource(imageUri)
-                        .setResizeOptions(new ResizeOptions(DPUtil.dip2px(375), DPUtil.dip2px(208)))
-                        .build();
-                DraweeController controller = Fresco.newDraweeControllerBuilder()
-                        .setImageRequest(request)
-                        .setOldController(view.getController())
-                        .setControllerListener(new BaseControllerListener<ImageInfo>())
-                        .build();
-                view.setController(controller);
-
-
-
-                view.setOnClickListener(new OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                    }
-                });
-                sliderViewList.add(view);
-            }*/
             ImagePagerAdapter sliderAdapter = new ImagePagerAdapter(imgs);
             indexViewpager.setAdapter(sliderAdapter);
             guideDot.removeAllViews();
@@ -250,16 +219,8 @@ public class HomeSliderLayout extends RelativeLayout {
         public Object instantiateItem(ViewGroup container, int position) {
             SimpleDraweeView view = (SimpleDraweeView) LayoutInflater.from(mContext).inflate(R.layout.layout_draweeview,null);
 
-           if(position==2){
-                view.setImageURI(Uri.parse("res:///" +R.drawable.slider_one));
-            }else if(position==1){
-                view.setImageURI(Uri.parse("res:///" +R.drawable.slider_one));
-            }else if(position==0){
-                view.setImageURI(Uri.parse("res:///" +R.drawable.slider_one));
-            }
-
             //创建将要下载的图片的URI
-            /*Uri imageUri = Uri.parse(imageViewList.get(position%imageViewList.size()).getUrl());
+            Uri imageUri = Uri.parse(imageViewList.get(position%imageViewList.size()).getPic_url());
             ImageRequest request = ImageRequestBuilder.newBuilderWithSource(imageUri)
                     .setResizeOptions(new ResizeOptions(DPUtil.dip2px(375), DPUtil.dip2px(208)))
                     .build();
@@ -268,13 +229,16 @@ public class HomeSliderLayout extends RelativeLayout {
                     .setOldController(view.getController())
                     .setControllerListener(new BaseControllerListener<ImageInfo>())
                     .build();
-            view.setController(controller);*/
+            view.setController(controller);
 
-
+            view.setTag(position%imageViewList.size());
 
             view.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    String url = imageViewList.get((Integer) v.getTag()).getUrl();
+                    if(!TextUtils.isEmpty(url))
+                        ControllerUtil.go2WebView(url,"网页详情","","","",false);
                 }
             });
             ((ViewPager) container).addView(view, 0);

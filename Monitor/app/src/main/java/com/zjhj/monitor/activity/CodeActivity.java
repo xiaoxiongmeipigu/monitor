@@ -35,7 +35,7 @@ public class CodeActivity extends BaseActivity {
         back.setImageResource(R.mipmap.back_white);
         center.setText("二维码");
 
-        image.setImageURI(Uri.parse("res:///" +R.drawable.code_logo));
+        image.setImageURI(Uri.parse("res:///" +R.drawable.code_download_logo));
 
     }
 

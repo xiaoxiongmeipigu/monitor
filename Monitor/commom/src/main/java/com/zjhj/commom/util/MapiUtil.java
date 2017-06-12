@@ -14,13 +14,6 @@ import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.lidroid.xutils.HttpUtils;
-import com.lidroid.xutils.exception.HttpException;
-import com.lidroid.xutils.http.HttpHandler;
-import com.lidroid.xutils.http.RequestParams;
-import com.lidroid.xutils.http.ResponseInfo;
-import com.lidroid.xutils.http.callback.RequestCallBack;
-import com.lidroid.xutils.http.client.HttpRequest;
 import com.zjhj.commom.api.BasicApi;
 import com.zjhj.commom.application.AppContext;
 import com.zjhj.commom.sharedpreferences.UserSP;
@@ -231,70 +224,6 @@ public class MapiUtil {
 
 
     }*/
-
-    private static HttpUtils httpUtils;
-    private static int out_time = 1000*10;
-    /**
-     * 返回访问网络的httputils对象（xutils）
-     * @return
-     */
-    public static HttpUtils getHttpUtils(){
-        if(httpUtils==null){
-            httpUtils = new HttpUtils(out_time);
-            httpUtils.configSoTimeout(out_time);
-            httpUtils.configResponseTextCharset("UTF-8");
-        }
-        return httpUtils;
-    }
-
-    public void uploadFile(final Activity activity, String url, File file, final MapiSuccessResponse response, final MapiFailResponse fail) {
-        RequestParams params = new RequestParams();
-        params.addBodyParameter("file", file);
-        DebugLog.i("url=" +BasicApi.BASIC_URL + url );
-        HttpHandler<String> httpHandler = getHttpUtils().send(HttpRequest.HttpMethod.POST,
-                BasicApi.BASIC_URL + url , params, new RequestCallBack<String>() {
-
-                    @Override
-                    public void onFailure(HttpException arg0, String arg1) {
-                        if (arg0.getCause() instanceof TimeoutError || arg0.getCause() instanceof NoConnectionError) {
-                            fail.fail(9999, "oops！网络异常请重新连接");
-                        } else {
-                            fail.fail(9999, arg0.getMessage());
-                        }
-                    }
-                    @Override
-                    public void onSuccess(ResponseInfo<String> arg0) {
-                        DebugLog.i("mapi response"+arg0.result);
-                        JSONObject jsonObject = JSONObject.parseObject(arg0.result);
-                        if (null!=jsonObject.getInteger("code")&&jsonObject.getInteger("code")==0) {
-                            response.success(jsonObject);
-                        }
-                        Integer code = jsonObject.getInteger("code");
-
-                        if (null!=code&&code==-1) {
-                            //打开登录UI
-                            if (activity == null) {
-                                return;
-                            }
-                            Intent intent = new Intent();
-                            intent.setAction("com.yigu.shop.login");
-                            activity.sendBroadcast(intent);
-
-                            return;
-                        }
-
-//                if (code == 9998) {//打开登录UI
-//                    Intent intent = new Intent();
-//                    intent.setAction("com.ypn.mobile.login");
-//                    activity.sendBroadcast(intent);
-//                    return;
-////                }
-                        if (fail != null && code!=0) {
-                            fail.fail(code, jsonObject.getString("msg"));
-                        }
-                    }
-                });
-    }
 
    /* public Map<String, String> initHead() {
         if (head == null) {

@@ -4,14 +4,22 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.OrientationHelper;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.zjhj.commom.api.ItemApi;
 import com.zjhj.commom.result.MapiResourceResult;
 import com.zjhj.commom.util.DPUtil;
+import com.zjhj.commom.util.DebugLog;
+import com.zjhj.commom.util.RequestExceptionCallback;
+import com.zjhj.commom.util.RequestPageCallback;
+import com.zjhj.commom.widget.MainToast;
 import com.zjhj.monitor.R;
 import com.zjhj.monitor.adapter.link.LinkAdapter;
 import com.zjhj.monitor.base.BaseActivity;
+import com.zjhj.monitor.interfaces.RecyOnItemClickListener;
+import com.zjhj.monitor.util.ControllerUtil;
 import com.zjhj.monitor.widget.BestSwipeRefreshLayout;
 import com.zjhj.monitor.widget.DividerListItemDecoration;
 
@@ -35,6 +43,10 @@ public class LinkActivity extends BaseActivity {
 
     List<MapiResourceResult> mList;
     LinkAdapter mAdapter;
+
+    private Integer pageIndex = 1;
+    private Integer pageNum = 12;
+    private Integer counts;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,30 +78,79 @@ public class LinkActivity extends BaseActivity {
         swipeRefreshLayout.setBestRefreshListener(new BestSwipeRefreshLayout.BestRefreshListener() {
             @Override
             public void onBestRefresh() {
-                swipeRefreshLayout.setRefreshing(false);
+                refreshData();
             }
         });
+
+        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+                LinearLayoutManager manager = (LinearLayoutManager) recyclerView.getLayoutManager();
+
+                if ((newState == RecyclerView.SCROLL_STATE_IDLE) && manager.findLastVisibleItemPosition() >= 0 && (manager.findLastVisibleItemPosition() == (manager.getItemCount() - 1))) {
+                    loadNext();
+                }
+
+            }
+
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+            }
+        });
+
+        mAdapter.setOnItemClickListener(new RecyOnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                MapiResourceResult mapiResourceResult = mList.get(position);
+                ControllerUtil.go2WebView(mapiResourceResult.getUrl(),"网页详情","","","",false);
+            }
+        });
+
+
     }
 
     private void load() {
+        showLoading();
+        ItemApi.linklist(this, pageIndex + "", pageNum + "", new RequestPageCallback<List<MapiResourceResult>>() {
+            @Override
+            public void success(Integer isNext, List<MapiResourceResult> success) {
+                hideLoading();
+                swipeRefreshLayout.setRefreshing(false);
+                counts = isNext;
+                if (success.isEmpty())
+                    return;
+                mList.addAll(success);
+                mAdapter.notifyDataSetChanged();
+            }
+        }, new RequestExceptionCallback() {
+            @Override
+            public void error(Integer code, String message) {
+                hideLoading();
+                swipeRefreshLayout.setRefreshing(false);
+                MainToast.showShortToast(message);
+            }
+        });
 
-        MapiResourceResult mapiResourceResult = new MapiResourceResult();
-        mapiResourceResult.setTitle("浙江省市场监管局");
-        mapiResourceResult.setUrl("www.hzscjg.gov.cn");
+    }
 
-        MapiResourceResult mapiResourceResult2 = new MapiResourceResult();
-        mapiResourceResult2.setTitle("嘉兴市市场监管局");
-        mapiResourceResult2.setUrl("www.jiaxingaic.gov.cn");
+    private void loadNext() {
+        if (counts == null || counts <= pageIndex) {
+            MainToast.showShortToast("没有更多数据了");
+            return;
+        }
+        pageIndex++;
+        load();
+    }
 
-        MapiResourceResult mapiResourceResult3 = new MapiResourceResult();
-        mapiResourceResult3.setTitle("海宁市场监管局");
-        mapiResourceResult3.setUrl("www.zjhngs.gov.cn");
-
-        mList.add(mapiResourceResult);
-        mList.add(mapiResourceResult2);
-        mList.add(mapiResourceResult3);
-        mAdapter.notifyDataSetChanged();
-
+    public void refreshData() {
+        if (null != mList) {
+            mList.clear();
+            pageIndex = 1;
+            mAdapter.notifyDataSetChanged();
+            load();
+        }
     }
 
     @OnClick(R.id.back)

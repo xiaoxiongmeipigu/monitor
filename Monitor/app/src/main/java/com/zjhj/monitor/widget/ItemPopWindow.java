@@ -43,7 +43,7 @@ public class ItemPopWindow extends PopupWindow implements PopupWindow.OnDismissL
     Activity activity;
     PopItemAdapter popItemAdapter;
 
-    int oldPos = -1;
+    int oldPos = 0;
 
     public ItemPopWindow(Activity context, int width, List<MapiResourceResult> list, int style) {
         inflater = (LayoutInflater) context
@@ -99,6 +99,7 @@ public class ItemPopWindow extends PopupWindow implements PopupWindow.OnDismissL
 
     public void refreshData(List<MapiResourceResult> data){
         this.list.addAll(data);
+        this.list.get(0).setSel(true);
         popItemAdapter.notifyDataSetChanged();
 }
 

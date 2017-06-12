@@ -4,14 +4,17 @@
     android:layout_height="fill_parent"
     >
 
+    <include
+        layout="@layout/lay_header"
+        />
+
     <RelativeLayout
         android:id="@+id/SurfaceViewLayout"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_above="@+id/cloud_area"
         android:layout_centerInParent="false"
-        android:layout_marginTop="6dp" 
-        android:layout_alignParentTop="true"
+        android:layout_below="@+id/lay_header"
         >
 
         <SurfaceView

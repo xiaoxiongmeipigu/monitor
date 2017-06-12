@@ -1,7 +1,5 @@
 package com.zjhj.commom.util;
 
-import org.xutils.common.util.MD5;
-
 import java.util.Date;
 
 /**

@@ -10,8 +10,16 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.facebook.drawee.backends.pipeline.Fresco;
+import com.facebook.drawee.controller.BaseControllerListener;
+import com.facebook.drawee.interfaces.DraweeController;
 import com.facebook.drawee.view.SimpleDraweeView;
+import com.facebook.imagepipeline.common.ResizeOptions;
+import com.facebook.imagepipeline.image.ImageInfo;
+import com.facebook.imagepipeline.request.ImageRequest;
+import com.facebook.imagepipeline.request.ImageRequestBuilder;
 import com.zjhj.commom.result.MapiItemResult;
+import com.zjhj.commom.util.DPUtil;
 import com.zjhj.monitor.R;
 import com.zjhj.monitor.interfaces.RecyOnItemClickListener;
 
@@ -60,17 +68,22 @@ public class ShopsAdapter extends RecyclerView.Adapter<ShopsAdapter.ViewHolder> 
         });
 
         MapiItemResult mapiItemResult = mList.get(position);
-        if(position==2){
-            holder.image.setImageURI(Uri.parse("res:///" +R.drawable.shop_three));
-        }else if(position==1){
-            holder.image.setImageURI(Uri.parse("res:///" +R.drawable.shop_two));
-        }else if(position==0){
-            holder.image.setImageURI(Uri.parse("res:///" +R.drawable.shop_one));
-        }
 
-        holder.title.setText(TextUtils.isEmpty(mapiItemResult.getTitle())?"":mapiItemResult.getTitle());
-        holder.phone.setText(TextUtils.isEmpty(mapiItemResult.getPhone())?"":mapiItemResult.getPhone());
-        holder.addrTv.setText(TextUtils.isEmpty(mapiItemResult.getAddr())?"":mapiItemResult.getAddr());
+        //创建将要下载的图片的URI
+        Uri imageUri = Uri.parse(TextUtils.isEmpty(mapiItemResult.getCover_pic())?"":mapiItemResult.getCover_pic());
+        ImageRequest request = ImageRequestBuilder.newBuilderWithSource(imageUri)
+                .setResizeOptions(new ResizeOptions(DPUtil.dip2px(100), DPUtil.dip2px(80)))
+                .build();
+        DraweeController controller = Fresco.newDraweeControllerBuilder()
+                .setImageRequest(request)
+                .setOldController(holder.image.getController())
+                .setControllerListener(new BaseControllerListener<ImageInfo>())
+                .build();
+        holder.image.setController(controller);
+
+        holder.title.setText(TextUtils.isEmpty(mapiItemResult.getName())?"":mapiItemResult.getName());
+        holder.phone.setText(TextUtils.isEmpty(mapiItemResult.getTel())?"":mapiItemResult.getTel());
+        holder.addrTv.setText(TextUtils.isEmpty(mapiItemResult.getAddress())?"":mapiItemResult.getAddress());
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {

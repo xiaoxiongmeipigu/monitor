@@ -57,7 +57,7 @@ public class NewsListAdapter extends RecyclerView.Adapter<NewsListAdapter.ViewHo
         });
 
         MapiResourceResult mapiResourceResult = mList.get(position);
-        holder.title.setText(TextUtils.isEmpty(mapiResourceResult.getName())?"":mapiResourceResult.getName());
+        holder.title.setText(TextUtils.isEmpty(mapiResourceResult.getTitle())?"":mapiResourceResult.getTitle());
 
     }
 

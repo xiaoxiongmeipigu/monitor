@@ -5,29 +5,37 @@ import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.provider.Settings;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.OrientationHelper;
 import android.support.v7.widget.RecyclerView;
 import android.telephony.TelephonyManager;
+import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.zjhj.commom.api.BasicApi;
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
+import com.zjhj.commom.api.ItemApi;
 import com.zjhj.commom.result.MapiResourceResult;
+import com.zjhj.commom.result.MapiUserResult;
 import com.zjhj.commom.util.DPUtil;
 import com.zjhj.commom.util.DebugLog;
+import com.zjhj.commom.util.DesBase64Tool;
+import com.zjhj.commom.util.RequestCallback;
+import com.zjhj.commom.util.RequestExceptionCallback;
+import com.zjhj.commom.widget.MainToast;
 import com.zjhj.monitor.R;
 import com.zjhj.monitor.adapter.news.NewsListAdapter;
 import com.zjhj.monitor.base.BaseActivity;
+import com.zjhj.monitor.base.TempData;
+import com.zjhj.monitor.interfaces.RecyOnItemClickListener;
 import com.zjhj.monitor.util.ControllerUtil;
 import com.zjhj.monitor.util.JGJDataSource;
 import com.zjhj.monitor.view.HomeSliderLayout;
 import com.zjhj.monitor.widget.DividerListItemDecoration;
-
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
@@ -51,6 +59,7 @@ public class MainActivity extends BaseActivity {
     NewsListAdapter mAdapter;
     List<MapiResourceResult> mList;
     List<MapiResourceResult> imgs;
+    ArrayList<MapiResourceResult> addrList;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,6 +77,7 @@ public class MainActivity extends BaseActivity {
 
         mList = new ArrayList<>();
         imgs = new ArrayList<>();
+        addrList = new ArrayList<>();
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         linearLayoutManager.setOrientation(OrientationHelper.VERTICAL);
@@ -77,24 +87,83 @@ public class MainActivity extends BaseActivity {
         mAdapter = new NewsListAdapter(this, mList);
         recyclerView.setAdapter(mAdapter);
 
+
     }
 
     private void initListener(){
-
+        mAdapter.setOnItemClickListener(new RecyOnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                String url = mList.get(position).getPost_url();
+                if(!TextUtils.isEmpty(url))
+                    ControllerUtil.go2WebView(url,"新闻详情","","","",false);
+            }
+        });
     }
 
     private void load(){
-        mList.clear();
-        mList.addAll(JGJDataSource.getNews());
-        mAdapter.notifyDataSetChanged();
+        showLoading();
+        ItemApi.defaultindex(this, new RequestCallback<JSONObject>() {
+            @Override
+            public void success(JSONObject success) {
+                hideLoading();
+                List<MapiResourceResult> bannerList = JSONArray.parseArray(success.getJSONObject("data").getJSONArray("banner").toJSONString(),MapiResourceResult.class);
+                List<MapiResourceResult> postList = JSONArray.parseArray(success.getJSONObject("data").getJSONArray("post").toJSONString(),MapiResourceResult.class);
+                List<MapiResourceResult> streetList = JSONArray.parseArray(success.getJSONObject("data").getJSONArray("street").toJSONString(),MapiResourceResult.class);
 
-        imgs.clear();
-        imgs.add(new MapiResourceResult());
-        imgs.add(new MapiResourceResult());
-        imgs.add(new MapiResourceResult());
+                String jsonPsdStr = success.getJSONObject("data").getString("account");
+                if(!TextUtils.isEmpty(jsonPsdStr)){
+                    try {
+                        String jsonStr = DesBase64Tool.desDecrypt(jsonPsdStr);
 
-        homeSliderLayout.setSlider(true);
-        homeSliderLayout.load(imgs);
+                        System.out.println("解密结果："+jsonStr);
+
+                        JSONObject jsonObject = JSONObject.parseObject(jsonStr);
+                        String username = TextUtils.isEmpty(jsonObject.getString("username"))?"":jsonObject.getString("username");
+                        String password = TextUtils.isEmpty(jsonObject.getString("password"))?"":jsonObject.getString("password");
+                        String ip = TextUtils.isEmpty(jsonObject.getString("ip"))?"":jsonObject.getString("ip");
+                        String route_id = TextUtils.isEmpty(jsonObject.getString("route_id"))?"":jsonObject.getString("route_id");
+
+                        MapiUserResult mapiUserResult = new MapiUserResult();
+                        mapiUserResult.setUsername(username);
+                        mapiUserResult.setPassword(password);
+                        mapiUserResult.setIp(ip);
+                        mapiUserResult.setRoute_id(route_id);
+                        TempData.getIns().setLoginData(mapiUserResult);
+
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
+
+                }
+
+                if(null!=bannerList&&!bannerList.isEmpty()){
+                    imgs.clear();
+                    imgs.addAll(bannerList);
+                    homeSliderLayout.setSlider(true);
+                    homeSliderLayout.load(imgs);
+                }
+
+                if(null!=postList&&!postList.isEmpty()){
+                    mList.clear();
+                    mList.addAll(postList);
+//                    mList.addAll(JGJDataSource.getNews());
+                    mAdapter.notifyDataSetChanged();
+                }
+
+                if(null!=streetList&&!streetList.isEmpty()){
+                    addrList.clear();
+                    addrList.addAll(streetList);
+                }
+
+            }
+        }, new RequestExceptionCallback() {
+            @Override
+            public void error(Integer code, String message) {
+                hideLoading();
+                MainToast.showShortToast(message);
+            }
+        });
 
     }
 
@@ -108,7 +177,7 @@ public class MainActivity extends BaseActivity {
                 ControllerUtil.go2News();
                 break;
             case R.id.monitor_ll:
-                ControllerUtil.go2Shops();
+                ControllerUtil.go2Shops(addrList);
                 break;
             case R.id.link_ll:
                 ControllerUtil.go2Link();
@@ -130,56 +199,6 @@ public class MainActivity extends BaseActivity {
             return true;
         }
         return super.onKeyDown(keyCode, event);
-    }
-
-    /**
-     * 获取登录设备mac地址
-     *
-     * @return
-     */
-    protected String getMac() {
-
-        WifiManager wifi = (WifiManager)getSystemService(Context.WIFI_SERVICE);
-        WifiInfo info = wifi.getConnectionInfo();
-        String macStr=null;
-        if(info!=null){
-            macStr= info.getMacAddress();
-        }
-        if (macStr == null) {
-            macStr = getUUID();
-        }
-        return macStr;
-
-
-//        WifiManager wm = (WifiManager) getSystemService(Context.WIFI_SERVICE);
-//        String mac = wm.getConnectionInfo().getMacAddress();
-//        return mac == null ? "" : mac;
-    }
-
-    public  String getUUID() {
-        String uuid = "";
-        synchronized (MainActivity.class) {
-            final String androidId = Settings.Secure.getString(
-                    getContentResolver(), Settings.Secure.ANDROID_ID);
-            try {
-                if ((null != androidId)
-                        && !"9774d56d682e549c".equals(androidId)) {
-                    uuid = UUID.nameUUIDFromBytes(androidId.getBytes("utf8"))
-                            .toString();
-                } else {
-                    final String deviceId = ((TelephonyManager)
-                            getSystemService(Context.TELEPHONY_SERVICE))
-                            .getDeviceId();
-                    uuid = deviceId != null ? UUID.nameUUIDFromBytes(
-                            deviceId.getBytes("utf8")).toString() : UUID
-                            .randomUUID().toString();
-                }
-            } catch (UnsupportedEncodingException e) {
-                throw new RuntimeException(e);
-            }
-        }
-
-        return uuid;
     }
 
 }

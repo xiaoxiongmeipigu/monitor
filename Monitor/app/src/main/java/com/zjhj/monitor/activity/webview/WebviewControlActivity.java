@@ -4,12 +4,14 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.media.AudioManager;
+import android.net.http.SslError;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.WindowManager;
+import android.webkit.SslErrorHandler;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -78,7 +80,7 @@ public class WebviewControlActivity extends BaseActivity {
     private void initView() {
         boolean isShare = getIntent().getBooleanExtra("isShare", false);
         this.title = getIntent().getStringExtra("title");
-        back.setImageResource(R.mipmap.back);
+        back.setImageResource(R.mipmap.back_white);
         if(TextUtils.isEmpty(title))
             layHeader.setVisibility(View.GONE);
         else
@@ -111,30 +113,7 @@ public class WebviewControlActivity extends BaseActivity {
     }
 
     private void initListener(){
-        shareDialog.setDialogItemClickListner(new ShareDialog.DialogItemClickListner() {
-            @Override
-            public void onItemClick(View view, int position) {
 
-                switch (position) {
-                    case 0://微信好友
-//                        ShareModule shareModule1 = new ShareModule(WebviewControlActivity.this, shareTitle, shareContext,shareLOGO , linkUrl);
-//                        shareModule1.startShare(1);
-                        break;
-                    case 1:
-//                        ShareModule shareModule2 = new ShareModule(WebviewControlActivity.this, shareTitle, shareContext, shareLOGO, linkUrl);
-//                        shareModule2.startShare(2);
-                        break;
-                    case 2:
-//                        ShareModule shareModule3 = new ShareModule(WebviewControlActivity.this, shareTitle, shareContext, shareLOGO, linkUrl);
-//                        shareModule3.startShare(3);
-                        break;
-                    case 3:
-//                        ShareModule shareModule4 = new ShareModule(WebviewControlActivity.this, shareTitle, shareContext, shareLOGO, linkUrl);
-//                        shareModule4.startShare(4);
-                        break;
-                }
-            }
-        });
     }
 
     private void loadData() {
@@ -146,6 +125,12 @@ public class WebviewControlActivity extends BaseActivity {
             public void onPageStarted(WebView view, String url, Bitmap favicon) {
                 super.onPageStarted(view, url, favicon);
                 WebViewUtil.shouldOverrideUrlLoading(WebviewControlActivity.this, view, url);
+            }*/
+
+           /* @Override
+            public void onReceivedSslError(WebView view, SslErrorHandler handler, SslError error) {
+                handler.proceed();  // 接受所有网站的证书
+                super.onReceivedSslError(view, handler, error);
             }*/
 
             @Override

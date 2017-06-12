@@ -11,7 +11,24 @@ public class MapiResourceResult extends MapiBaseResult {
     private int version;
     private String poster;
     private String title;
+    private String pic_url;
+    private String post_url;
 
+    public String getPost_url() {
+        return post_url;
+    }
+
+    public void setPost_url(String post_url) {
+        this.post_url = post_url;
+    }
+
+    public String getPic_url() {
+        return pic_url;
+    }
+
+    public void setPic_url(String pic_url) {
+        this.pic_url = pic_url;
+    }
 
     private boolean isSel;
 

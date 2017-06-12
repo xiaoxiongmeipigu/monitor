@@ -6,11 +6,13 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.zjhj.commom.result.IndexData;
 import com.zjhj.commom.result.MapiItemResult;
 import com.zjhj.monitor.R;
+import com.zjhj.monitor.interfaces.RecyOnItemClickListener;
 
 import java.util.List;
 
@@ -29,6 +31,12 @@ public class NewsItemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     LayoutInflater inflater;
 
     private List<IndexData> mList;
+
+    private RecyOnItemClickListener onItemClickListener;
+
+    public void setOnItemClickListener(RecyOnItemClickListener onItemClickListener) {
+        this.onItemClickListener = onItemClickListener;
+    }
 
     public NewsItemAdapter(Context context, List<IndexData> list) {
         inflater = LayoutInflater.from(context);
@@ -92,6 +100,9 @@ public class NewsItemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         TextView title;
         @Bind(R.id.desc)
         TextView desc;
+        @Bind(R.id.root_view)
+        LinearLayout rootView;
+
         public ItemHotViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
@@ -107,13 +118,21 @@ public class NewsItemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
     private void setDate(DateViewHolder holder, int position) {
         MapiItemResult mapiItemResult = (MapiItemResult) mList.get(position).getData();
-        holder.dateTv.setText(TextUtils.isEmpty(mapiItemResult.getDate())?"":mapiItemResult.getDate());
+        holder.dateTv.setText(TextUtils.isEmpty(mapiItemResult.getDate()) ? "" : mapiItemResult.getDate());
     }
 
     private void setItem(ItemHotViewHolder holder, int position) {
         MapiItemResult mapiItemResult = (MapiItemResult) mList.get(position).getData();
-        holder.title.setText(TextUtils.isEmpty(mapiItemResult.getTitle())?"":mapiItemResult.getTitle());
-        holder.desc.setText(TextUtils.isEmpty(mapiItemResult.getDesc())?"":mapiItemResult.getDesc());
+        holder.rootView.setTag(position);
+        holder.rootView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (null != onItemClickListener)
+                    onItemClickListener.onItemClick(view, (Integer) view.getTag());
+            }
+        });
+        holder.title.setText(TextUtils.isEmpty(mapiItemResult.getTitle()) ? "" : mapiItemResult.getTitle());
+        holder.desc.setText(TextUtils.isEmpty(mapiItemResult.getDesc()) ? "" : mapiItemResult.getDesc());
     }
 
 }

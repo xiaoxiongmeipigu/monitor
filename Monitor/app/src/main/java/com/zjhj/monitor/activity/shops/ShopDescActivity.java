@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import com.zjhj.commom.result.IndexData;
 import com.zjhj.commom.result.MapiResourceResult;
+import com.zjhj.commom.result.MapiServiceResult;
 import com.zjhj.monitor.R;
 import com.zjhj.monitor.adapter.shops.ShopDescAdapter;
 import com.zjhj.monitor.base.BaseActivity;
@@ -32,12 +33,22 @@ public class ShopDescActivity extends BaseActivity {
     ShopDescAdapter mAdapter;
     List<IndexData> mList;
 
+    MapiServiceResult xqjsResult;
+    MapiServiceResult jbxxResult;
+    MapiServiceResult fwResult;
+    MapiServiceResult descResult;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shop_desc);
         ButterKnife.bind(this);
+        if(null!=getIntent()){
+            xqjsResult = (MapiServiceResult) getIntent().getSerializableExtra("xqjs");
+            jbxxResult = (MapiServiceResult) getIntent().getSerializableExtra("jbxx");
+            fwResult = (MapiServiceResult) getIntent().getSerializableExtra("fw");
+            descResult = (MapiServiceResult) getIntent().getSerializableExtra("desc");
+        }
         initView();
         initListener();
         load();
@@ -62,9 +73,15 @@ public class ShopDescActivity extends BaseActivity {
 
     public void load(){
         mList.clear();
-        mList.add(new IndexData(0, "FIRST", new MapiResourceResult()));
-        mList.add(new IndexData(0, "BASIC", new MapiResourceResult()));
-        mList.add(new IndexData(0, "SERVICE", new MapiResourceResult()));
+        if(null!=descResult)
+            mList.add(new IndexData(0, "DESC",descResult));
+        if(null!=xqjsResult)
+            mList.add(new IndexData(1, "FIRST",xqjsResult));
+        if(null!=jbxxResult)
+            mList.add(new IndexData(2, "BASIC",jbxxResult));
+        if(null!=fwResult)
+            mList.add(new IndexData(3, "SERVICE",fwResult));
+
         mAdapter.notifyDataSetChanged();
     }
 

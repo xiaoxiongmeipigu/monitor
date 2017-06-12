@@ -4,23 +4,30 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.OrientationHelper;
 import android.support.v7.widget.RecyclerView;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
+import com.zjhj.commom.api.ItemApi;
 import com.zjhj.commom.result.MapiItemResult;
 import com.zjhj.commom.result.MapiResourceResult;
 import com.zjhj.commom.util.DPUtil;
+import com.zjhj.commom.util.RequestExceptionCallback;
+import com.zjhj.commom.util.RequestPageCallback;
+import com.zjhj.commom.widget.MainToast;
 import com.zjhj.monitor.R;
-import com.zjhj.monitor.adapter.link.LinkAdapter;
 import com.zjhj.monitor.adapter.shops.ShopsAdapter;
 import com.zjhj.monitor.base.BaseActivity;
 import com.zjhj.monitor.interfaces.RecyOnItemClickListener;
 import com.zjhj.monitor.util.ControllerUtil;
-import com.zjhj.monitor.util.JGJDataSource;
 import com.zjhj.monitor.widget.BestSwipeRefreshLayout;
 import com.zjhj.monitor.widget.DividerListItemDecoration;
 import com.zjhj.monitor.widget.ItemPopWindow;
@@ -46,6 +53,10 @@ public class ShopsActivity extends BaseActivity {
     BestSwipeRefreshLayout swipeRefreshLayout;
     @Bind(R.id.bg_color)
     View bgColor;
+    @Bind(R.id.clear_iv)
+    ImageView clearIv;
+    @Bind(R.id.search_et)
+    EditText searchEt;
 
     private List<MapiItemResult> mList;
     ShopsAdapter mAdapter;
@@ -54,6 +65,11 @@ public class ShopsActivity extends BaseActivity {
     List<MapiResourceResult> addrsList;
     String addrId = "";
 
+    private Integer pageIndex = 1;
+    private Integer pageNum = 12;
+    private Integer counts;
+    String keyword = "";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,6 +77,7 @@ public class ShopsActivity extends BaseActivity {
         ButterKnife.bind(this);
         initView();
         initListener();
+        loadAddr();
         load();
     }
 
@@ -83,13 +100,65 @@ public class ShopsActivity extends BaseActivity {
     }
 
     private void initListener() {
-        swipeRefreshLayout.setBestRefreshListener(new BestSwipeRefreshLayout.BestRefreshListener() {
+
+        searchEt.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
-            public void onBestRefresh() {
-                swipeRefreshLayout.setRefreshing(false);
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if (actionId == EditorInfo.IME_ACTION_SEARCH) {//EditorInfo.IME_ACTION_SEARCH、EditorInfo.IME_ACTION_SEND等分别对应EditText的imeOptions属性
+                    //TODO回车键按下时要执行的操作
+                    keyword = searchEt.getText().toString();
+                    refreshData();
+                }
+                return true;
             }
         });
 
+        searchEt.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int start, int count,
+                                          int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int start, int before, int count) {
+                if (charSequence.length() > 0) {
+                    clearIv.setVisibility(View.VISIBLE);
+                } else {
+                    clearIv.setVisibility(View.INVISIBLE);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+
+        swipeRefreshLayout.setBestRefreshListener(new BestSwipeRefreshLayout.BestRefreshListener() {
+            @Override
+            public void onBestRefresh() {
+                refreshData();
+            }
+        });
+
+        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+                LinearLayoutManager manager = (LinearLayoutManager) recyclerView.getLayoutManager();
+
+                if ((newState == RecyclerView.SCROLL_STATE_IDLE) && manager.findLastVisibleItemPosition() >= 0 && (manager.findLastVisibleItemPosition() == (manager.getItemCount() - 1))) {
+                    loadNext();
+                }
+
+            }
+
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+            }
+        });
         addrPop.setOnDismissListener(new PopupWindow.OnDismissListener() {
             @Override
             public void onDismiss() {
@@ -106,10 +175,10 @@ public class ShopsActivity extends BaseActivity {
                         addrId = addrsList.get(postion).getId();
                         addrCb.setText(addrsList.get(postion).getName());
                     } else {
-                        addrId = "";
-                        addrCb.setText("硖石街道");
+                        addrId = addrsList.get(postion).getId();
+                        addrCb.setText("全部");
                     }
-//                    refreshData();
+                    refreshData();
                 }
                 addrPop.dismiss();
             }
@@ -118,42 +187,70 @@ public class ShopsActivity extends BaseActivity {
         mAdapter.setOnItemClickListener(new RecyOnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
-                ControllerUtil.go2ShopDetail();
+                ControllerUtil.go2ShopDetail(mList.get(position).getId());
             }
         });
 
     }
 
-    private void load() {
+    private void loadAddr() {
+        if (null != getIntent()) {
+            List<MapiResourceResult> list = (List<MapiResourceResult>) getIntent().getSerializableExtra("list");
+            if (null != list && !list.isEmpty()) {
+                addrsList.clear();
+                addrsList.add(new MapiResourceResult("", "全部"));
+                addrsList.addAll(list);
+//                addrsList.addAll(JGJDataSource.getAddrs());
+                addrPop.refreshData(addrsList);
+                addrCb.setText("全部");
+            }
 
-        MapiItemResult itemResultOne = new MapiItemResult();
-        itemResultOne.setTitle("台资味");
-        itemResultOne.setPhone("13562541286");
-        itemResultOne.setAddr("海宁市海洲街道工人路240号");
-
-        MapiItemResult itemResultTwo = new MapiItemResult();
-        itemResultTwo.setTitle("老娘舅");
-        itemResultTwo.setPhone("13562541286");
-        itemResultTwo.setAddr("海宁市硖石街道海昌路1号");
-
-        MapiItemResult itemResultThree = new MapiItemResult();
-        itemResultThree.setTitle("必胜客");
-        itemResultThree.setPhone("13562541286");
-        itemResultThree.setAddr("海宁市海洲街道工人路60号");
-
-        mList.add(itemResultOne);
-        mList.add(itemResultTwo);
-        mList.add(itemResultThree);
-
-        mAdapter.notifyDataSetChanged();
-
-        addrsList.clear();
-        addrsList.addAll(JGJDataSource.getAddrs());
-        addrPop.refreshData(addrsList);
-
+        }
     }
 
-    @OnClick({R.id.back, R.id.search_ll, R.id.addr_cb})
+    private void load() {
+
+        showLoading();
+        ItemApi.merchantlist(this, pageIndex + "", pageNum + "", keyword, addrId, new RequestPageCallback<List<MapiItemResult>>() {
+            @Override
+            public void success(Integer isNext, List<MapiItemResult> success) {
+                hideLoading();
+                swipeRefreshLayout.setRefreshing(false);
+                counts = isNext;
+                if (success.isEmpty())
+                    return;
+                mList.addAll(success);
+                mAdapter.notifyDataSetChanged();
+            }
+        }, new RequestExceptionCallback() {
+            @Override
+            public void error(Integer code, String message) {
+                hideLoading();
+                swipeRefreshLayout.setRefreshing(false);
+                MainToast.showShortToast(message);
+            }
+        });
+    }
+
+    private void loadNext() {
+        if (counts == null || counts <= pageIndex) {
+            MainToast.showShortToast("没有更多数据了");
+            return;
+        }
+        pageIndex++;
+        load();
+    }
+
+    public void refreshData() {
+        if (null != mList) {
+            mList.clear();
+            pageIndex = 1;
+            mAdapter.notifyDataSetChanged();
+            load();
+        }
+    }
+
+    @OnClick({R.id.back, R.id.search_ll, R.id.addr_cb, R.id.clear_iv})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.back:
@@ -167,6 +264,9 @@ public class ShopsActivity extends BaseActivity {
                     addrPop.showPopupWindow(view);
                     bgColor.setVisibility(View.VISIBLE);
                 }
+                break;
+            case R.id.clear_iv:
+                searchEt.setText("");
                 break;
         }
     }

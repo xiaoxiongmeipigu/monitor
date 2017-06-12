@@ -2,142 +2,262 @@ package com.live;
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
+import android.net.wifi.WifiInfo;
+import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.provider.Settings;
+import android.telephony.TelephonyManager;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.SurfaceHolder.Callback;
 import android.view.SurfaceView;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.hik.mcrsdk.util.CLog;
 import com.hikvision.vmsnetsdk.DeviceInfo;
 import com.hikvision.vmsnetsdk.RealPlayURL;
+import com.hikvision.vmsnetsdk.ServInfo;
 import com.hikvision.vmsnetsdk.VMSNetSDK;
 import com.zjhj.commom.api.BasicApi;
+import com.zjhj.commom.result.MapiCameraResult;
 import com.zjhj.commom.util.DebugLog;
 import com.zjhj.commom.widget.MainToast;
 import com.zjhj.monitor.R;
 import com.zjhj.monitor.base.BaseActivity;
+import com.zjhj.monitor.base.Constants;
+import com.zjhj.monitor.base.TempData;
+import com.zjhj.monitor.widget.MainAlertDialog;
+
+import java.io.UnsupportedEncodingException;
+import java.util.UUID;
+
+import butterknife.Bind;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * 预览
- * 
+ *
  * @author huangweifeng
  * @Data 2013-10-21
  */
 public class LiveActivity extends BaseActivity implements OnClickListener, OnCheckedChangeListener, Callback, LiveCallBack {
-    private static final String TAG             = "LiveActivity";
+    private static final String TAG = "LiveActivity";
+
+    @SuppressLint("HandlerLeak")
+    private final class MsgHandler extends Handler {
+
+        @SuppressWarnings("unchecked")
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            switch (msg.what) {
+                case Constants.Login.SHOW_LOGIN_PROGRESS:
+                   showLoading();
+                    break;
+                case Constants.Login.CANCEL_LOGIN_PROGRESS:
+                    hideLoading();
+                    break;
+                case Constants.Login.LOGIN_SUCCESS:
+                    hideLoading();
+                    // 登录成功
+                    onLoginSuccess();
+                    break;
+                case Constants.Login.LOGIN_FAILED:
+                    hideLoading();
+                    // 登录失败
+                    onLoginFailed();
+                    break;
+
+                default:
+                    break;
+            }
+
+        }
+    }
+
+    /** 发送消息的对象 */
+    private MsgHandler          handler       = new MsgHandler();
+
+    @Bind(R.id.back)
+    ImageView back;
+    @Bind(R.id.center)
+    TextView center;
     /**
      * 开始播放按钮
      */
-    private Button              mStartBtn;
+    private Button mStartBtn;
     /**
      * 停止播放按钮
      */
-    private Button              mStopBtn;
+    private Button mStopBtn;
     /**
      * 抓拍按钮
      */
-    private Button              mCaptureBtn;
+    private Button mCaptureBtn;
     /**
      * 录像按钮
      */
-    private Button              mRecordBtn;
+    private Button mRecordBtn;
     /**
      * 音频按钮
      */
-    private Button              mAudioBtn;
+    private Button mAudioBtn;
     /**
      * 码流切换
      */
-    private RadioGroup          mRadioGroup;
+    private RadioGroup mRadioGroup;
     /**
      * 码流类型
      */
-    private int                 mStreamType     = -1;
+    private int mStreamType = -1;
     /**
      * 通过VMSNetSDK返回的预览地址对象
      */
-    private RealPlayURL         mRealPlayURL;
+    private RealPlayURL mRealPlayURL;
     /**
      * 登录设备的用户名
      */
-    private String              mName;
+    private String mName;
     /**
      * 登录设备的密码
      */
-    private String              mPassword;
+    private String mPassword;
     /**
      * 控制层对象
      */
-    private LiveControl         mLiveControl;
+    private LiveControl mLiveControl;
     /**
      * 播放视频的控件对象
      */
-    private SurfaceView         mSurfaceView;
+    private SurfaceView mSurfaceView;
     /**
      * 创建取流等待bar
      */
-    private ProgressBar         mProgressBar;
+    private ProgressBar mProgressBar;
     /**
      * 创建消息对象
      */
-    private Handler             mMessageHandler = new MyHandler();
+    private Handler mMessageHandler = new MyHandler();
     /**
      * 音频是否开启
      */
-    private boolean             mIsAudioOpen;
+    private boolean mIsAudioOpen;
     /**
      * 是否正在录像
      */
-    private boolean             mIsRecord;
+    private boolean mIsRecord;
     /**
      * 播放流量
      */
-    private long                mStreamRate     = 0;
+    private long mStreamRate = 0;
 
     /**
      * 云台控制界面布局区域
      */
-    private RelativeLayout      cloudCtrlArea;
+    private RelativeLayout cloudCtrlArea;
     /**
      * 云台控制按钮
      */
-    private Button              startCtrlBtn;
+    private Button startCtrlBtn;
     /**
      * 停止云台控制按钮
      */
-    private Button              stopCtrlBtn;
+    private Button stopCtrlBtn;
     /**
      * 云台控制对话框
      */
-    private AlertDialog         mDialog;
-    private String              mDeviceID       = "";
+    private AlertDialog mDialog;
+    private String mDeviceID = "";
 
-    private VMSNetSDK           mVmsNetSDK      = null;
+    private VMSNetSDK mVmsNetSDK = null;
+
+    MapiCameraResult cameraResult;
+
+    /** 登录返回的数据 */
+    private ServInfo servInfo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.live);
+        ButterKnife.bind(this);
 
-        initData();
+        if(null!=getIntent())
+            cameraResult = (MapiCameraResult) getIntent().getSerializableExtra("item");
 
-        initUI();
+        if(null!=cameraResult){
+            if(null==TempData.getIns().getUserData())
+                login();
+            initData();
+            initUI();
+        }
+    }
 
+    private void login(){
+        servInfo = new ServInfo();
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                handler.sendEmptyMessage(Constants.Login.SHOW_LOGIN_PROGRESS);
+                String servAddr = TempData.getIns().getLoginData().getIp();
+                String userName = TempData.getIns().getLoginData().getUsername().trim();
+                String password = TempData.getIns().getLoginData().getPassword().trim();
+                String lineID = TextUtils.isEmpty(TempData.getIns().getLoginData().getRoute_id())?"1":TempData.getIns().getLoginData().getRoute_id();
+                int lineIntId = Integer.parseInt(lineID);
+
+
+
+                String macAddress = getMac();
+                DebugLog.i("servAddr:"+servAddr+",userName:"+userName+",password:"+password+",lineID:"+lineID+",mac:"+macAddress);
+                // 登录请求
+                boolean ret = VMSNetSDK.getInstance().login(servAddr, userName, password, lineIntId, macAddress,
+                        servInfo);
+                if (servInfo != null) {
+                    // 打印出登录时返回的信息
+                    Log.i(Constants.LOG_TAG, "login ret : " + ret);
+                    Log.i(Constants.LOG_TAG, "login response info[" + "sessionID:" + servInfo.sessionID + ",userID:"
+                            + servInfo.userID + ",magInfo:" + servInfo.magInfo + ",picServerInfo:"
+                            + servInfo.picServerInfo + ",ptzProxyInfo:" + servInfo.ptzProxyInfo + ",userCapability:"
+                            + servInfo.userCapability + ",vmsList:" + servInfo.vmsList + ",vtduInfo:"
+                            + servInfo.vtduInfo + ",webAppList:" + servInfo.webAppList + "]");
+                }
+
+                if (ret) {
+                    TempData.getIns().setUserData(servInfo);
+                    handler.sendEmptyMessage(Constants.Login.LOGIN_SUCCESS);
+                } else {
+                    handler.sendEmptyMessage(Constants.Login.LOGIN_FAILED);
+                }
+
+            }
+        }).start();
+    }
+
+    private void onLoginSuccess(){
+        MainToast.showShortToast("连接监控成功");
+    }
+
+    private void onLoginFailed(){
+        MainToast.showShortToast("连接监控失败");
     }
 
     /**
      * 初始化网络库和控制层对象
-     * 
+     *
      * @since V1.0
      */
     private void initData() {
@@ -145,22 +265,26 @@ public class LiveActivity extends BaseActivity implements OnClickListener, OnChe
         mLiveControl = new LiveControl();
         mLiveControl.setLiveCallBack(this);
         mVmsNetSDK = VMSNetSDK.getInstance();
-        if(mVmsNetSDK == null){
+        if (mVmsNetSDK == null) {
             CLog.e(TAG, "mVmsNetSDK is null");
-            return ;
+            return;
         }
 
         mName = "admin";
-        mPassword = "kof123456";
+        mPassword = "123456";
 
     }
 
     /**
      * 初始化控件
-     * 
+     *
      * @since V1.0
      */
     private void initUI() {
+
+        back.setImageResource(R.mipmap.back_white);
+        center.setText("实时监控");
+
         mStartBtn = (Button) findViewById(R.id.liveStartBtn);
         mStartBtn.setOnClickListener(this);
         mStopBtn = (Button) findViewById(R.id.liveStopBtn);
@@ -203,15 +327,15 @@ public class LiveActivity extends BaseActivity implements OnClickListener, OnChe
             switch (group.getCheckedRadioButtonId()) {
                 case R.id.mainRadio:
                     mStreamType = ConstantLive.MAIN_STREAM;
-                break;
+                    break;
 
                 case R.id.subRadio:
                     mStreamType = ConstantLive.SUB_STREAM;
-                break;
+                    break;
 
                 case R.id.magRadio:
                     mStreamType = ConstantLive.MAG;
-                break;
+                    break;
             }
         }
     }
@@ -221,31 +345,31 @@ public class LiveActivity extends BaseActivity implements OnClickListener, OnChe
         switch (v.getId()) {
             case R.id.liveStartBtn:
                 startBtnOnClick();
-            break;
+                break;
 
             case R.id.liveStopBtn:
                 stopBtnOnClick();
-            break;
+                break;
 
             case R.id.liveCaptureBtn:
                 captureBtnOnClick();
-            break;
+                break;
 
             case R.id.liveRecordBtn:
                 recordBtnOnClick();
-            break;
+                break;
 
             case R.id.liveAudioBtn:
                 audioBtnOnClick();
-            break;
+                break;
             case R.id.start_ctrl:
                 startCloudCtrl();
-            break;
+                break;
             case R.id.stop_ctrl:
                 stopCloudCtrl();
-            break;
+                break;
             default:
-            break;
+                break;
         }
     }
 
@@ -254,9 +378,9 @@ public class LiveActivity extends BaseActivity implements OnClickListener, OnChe
      */
     private void startCloudCtrl() {
 
-        final int[] gestureIDs = { 1, 2, 3, 4, 11, 12, 13, 14, 7, 8, 9, 10 };
-        String[] datas = { "云台转上", "云台转下", "云台转左", "云台转右", "云台左上", "云台右上", "云台左下", "云台右下", "镜头拉近", "镜头拉远", "镜头近焦",
-                "镜头远焦" };
+        final int[] gestureIDs = {1, 2, 3, 4, 11, 12, 13, 14, 7, 8, 9, 10};
+        String[] datas = {"云台转上", "云台转下", "云台转左", "云台转右", "云台左上", "云台右上", "云台左下", "云台右下", "镜头拉近", "镜头拉远", "镜头近焦",
+                "镜头远焦"};
         mDialog = new AlertDialog.Builder(this).setSingleChoiceItems(datas, 0, new DialogInterface.OnClickListener() {
 
             @Override
@@ -270,7 +394,7 @@ public class LiveActivity extends BaseActivity implements OnClickListener, OnChe
 
     /**
      * 发送云台控制命令
-     * 
+     *
      * @param gestureID 1-云台转上 、2-云台转下 、3-云台转左 、4-云台转右、 11-云台左上 、12-云台右上 13-云台左下 、14-云台右下、7-镜头拉近、8-镜头拉远、9-镜头近焦、10-镜头远焦
      */
     private void sendCtrlCmd(final int gestureID) {
@@ -309,31 +433,34 @@ public class LiveActivity extends BaseActivity implements OnClickListener, OnChe
 
     /**
      * 启动播放 void
-     * 
+     *
      * @since V1.0
      */
     private void startBtnOnClick() {
-        mProgressBar.setVisibility(View.VISIBLE);
-        new Thread() {
-            @Override
-            public void run() {
-                super.run();
-                mLiveControl.setLiveParams(getPlayUrl(mStreamType), mName, mPassword);
-                if (mLiveControl.LIVE_PLAY == mLiveControl.getLiveState()) {
-                    mLiveControl.stop();
-                }
+        if(null!=TempData.getIns().getUserData()){
+            mProgressBar.setVisibility(View.VISIBLE);
+            new Thread() {
+                @Override
+                public void run() {
+                    super.run();
+                    mLiveControl.setLiveParams(getPlayUrl(mStreamType), mName, mPassword);
+                    if (mLiveControl.LIVE_PLAY == mLiveControl.getLiveState()) {
+                        mLiveControl.stop();
+                    }
 
-                if (mLiveControl.LIVE_INIT == mLiveControl.getLiveState()) {
-                    mLiveControl.startLive(mSurfaceView);
+                    if (mLiveControl.LIVE_INIT == mLiveControl.getLiveState()) {
+                        mLiveControl.startLive(mSurfaceView);
+                    }
                 }
-            }
-        }.start();
+            }.start();
+        }else
+            MainToast.showShortToast("未检测到监控信息");
     }
 
     /**
      * 该方法是获取播放地址的，当mStreamType=2时，获取的是MAG，当mStreamType =1时获取的子码流，当mStreamType = 0时获取的是主码流
      * 由于该方法中部分参数是监控点的属性，所以需要先获取监控点信息，具体获取监控点信息的方法见resourceActivity。
-     * 
+     *
      * @param streamType 2、表示MAG取流方式；1、表示子码流取流方式；0、表示主码流取流方式；
      * @return String 播放地址 ：2、表示返回的是MAG的播放地址;1、表示返回的是子码流的播放地址；0、表示返回的是主码流的播放地址。
      * @since V1.0
@@ -341,14 +468,14 @@ public class LiveActivity extends BaseActivity implements OnClickListener, OnChe
     private String getPlayUrl(int streamType) {
         String url = "";
         // 登录平台地址
-        String mAddress = BasicApi.serverPlayAddr;
+        String mAddress = TempData.getIns().getLoginData().getIp();
         // 登录返回的sessiond
-        String mSessionID = "D0BCAF6D-7897-BC8D-9126-2773360A93DD";
-
+        String mSessionID = TempData.getIns().getUserData().sessionID;
+        DebugLog.i("cameraResult.getCamera_id():"+cameraResult.getCamera_id()+",getDevice_id"+cameraResult.getDevice_id());
         if (streamType == 2) {
 
             // TODO 原有代码streamType传0
-            VMSNetSDK.getInstance().getRealPlayURL(mAddress, mSessionID,"1" , streamType, mRealPlayURL);//cameraInfo.cameraID
+            VMSNetSDK.getInstance().getRealPlayURL(mAddress, mSessionID, cameraResult.getCamera_id(), streamType, mRealPlayURL);//cameraInfo.cameraID
             if (null == mRealPlayURL) {
                 DebugLog.i("getPlayUrl():: mRealPlayURL is null");
                 return "";
@@ -357,7 +484,7 @@ public class LiveActivity extends BaseActivity implements OnClickListener, OnChe
             url = mRealPlayURL.url2;
             DebugLog.i("getPlayUrl():: url is " + url);
         } else {
-            VMSNetSDK.getInstance().getRealPlayURL(mAddress, mSessionID, "1", streamType, mRealPlayURL);//cameraInfo.cameraID
+            VMSNetSDK.getInstance().getRealPlayURL(mAddress, mSessionID,cameraResult.getCamera_id(), streamType, mRealPlayURL);//cameraInfo.cameraID
             if (null == mRealPlayURL) {
                 DebugLog.i("getPlayUrl():: mRealPlayURL is null");
                 return "";
@@ -367,7 +494,7 @@ public class LiveActivity extends BaseActivity implements OnClickListener, OnChe
             DebugLog.i("getPlayUrl():: url is " + url);
         }
         DeviceInfo deviceInfo = new DeviceInfo();
-        boolean ret = VMSNetSDK.getInstance().getDeviceInfo(mAddress, mSessionID, "1", deviceInfo);//cameraInfo.deviceID
+        boolean ret = VMSNetSDK.getInstance().getDeviceInfo(mAddress, mSessionID, cameraResult.getDevice_id(), deviceInfo);//cameraInfo.deviceID
         DebugLog.i("ret is : " + ret);
         if (ret && deviceInfo != null) {
             mName = deviceInfo.userName;
@@ -377,14 +504,12 @@ public class LiveActivity extends BaseActivity implements OnClickListener, OnChe
             mPassword = "12345";
             DebugLog.i("getPlayUrl():: deviceInfo is error");
         }
-        
-        if(null == mName || "".equals(mName))
-        {
+
+        if (null == mName || "".equals(mName)) {
             mName = "admin";
         }
-        
-        if(null == mPassword || "".equals(mPassword))
-        {
+
+        if (null == mPassword || "".equals(mPassword)) {
             mPassword = "12345";
         }
         DebugLog.i("mName is " + mName + "---" + mPassword + "-----cameraInfo.deviceID:" + 1);
@@ -393,7 +518,7 @@ public class LiveActivity extends BaseActivity implements OnClickListener, OnChe
 
     /**
      * 停止播放 void
-     * 
+     *
      * @since V1.0
      */
     private void stopBtnOnClick() {
@@ -404,7 +529,7 @@ public class LiveActivity extends BaseActivity implements OnClickListener, OnChe
 
     /**
      * 抓拍 void
-     * 
+     *
      * @since V1.0
      */
     private void captureBtnOnClick() {
@@ -425,7 +550,7 @@ public class LiveActivity extends BaseActivity implements OnClickListener, OnChe
 
     /**
      * 录像 void
-     * 
+     *
      * @since V1.0
      */
     private void recordBtnOnClick() {
@@ -449,7 +574,7 @@ public class LiveActivity extends BaseActivity implements OnClickListener, OnChe
 
     /**
      * 音频 void
-     * 
+     *
      * @since V1.0
      */
     private void audioBtnOnClick() {
@@ -505,7 +630,7 @@ public class LiveActivity extends BaseActivity implements OnClickListener, OnChe
 
     /**
      * 返回已经播放的流量 void
-     * 
+     *
      * @return long
      * @since V1.0
      */
@@ -515,7 +640,7 @@ public class LiveActivity extends BaseActivity implements OnClickListener, OnChe
 
     /**
      * 发送消息
-     * 
+     *
      * @param i void
      * @since V1.0
      */
@@ -527,9 +652,14 @@ public class LiveActivity extends BaseActivity implements OnClickListener, OnChe
         }
     }
 
+    @OnClick(R.id.back)
+    public void onClick() {
+        finish();
+    }
+
     /**
      * 消息类
-     * 
+     *
      * @author huangweifeng
      * @Data 2013-10-23
      */
@@ -539,51 +669,103 @@ public class LiveActivity extends BaseActivity implements OnClickListener, OnChe
             switch (msg.arg1) {
                 case ConstantLive.RTSP_SUCCESS:
                     MainToast.showShortToast("启动取流成功");
-                break;
+                    break;
 
                 case ConstantLive.STOP_SUCCESS:
                     MainToast.showShortToast("停止成功");
-                break;
+                    break;
 
                 case ConstantLive.START_OPEN_FAILED:
-                    MainToast.showShortToast( "开启播放库失败");
+                    MainToast.showShortToast("开启播放库失败");
                     if (null != mProgressBar) {
                         mProgressBar.setVisibility(View.GONE);
                     }
-                break;
+                    break;
 
                 case ConstantLive.PLAY_DISPLAY_SUCCESS:
-                    MainToast.showShortToast( "播放成功");
+                    MainToast.showShortToast("播放成功");
                     if (null != mProgressBar) {
                         mProgressBar.setVisibility(View.GONE);
                     }
-                break;
+                    break;
 
                 case ConstantLive.RTSP_FAIL:
-                    MainToast.showShortToast( "RTSP链接失败");
+                    MainToast.showShortToast("RTSP链接失败");
                     if (null != mProgressBar) {
                         mProgressBar.setVisibility(View.GONE);
                     }
                     if (null != mLiveControl) {
                         mLiveControl.stop();
                     }
-                break;
+                    break;
 
                 case ConstantLive.GET_OSD_TIME_FAIL:
-                    MainToast.showShortToast( "获取OSD时间失败");
-                break;
+                    MainToast.showShortToast("获取OSD时间失败");
+                    break;
 
                 case ConstantLive.SD_CARD_UN_USEABLE:
-                    MainToast.showShortToast( "SD卡不可用");
-                break;
+                    MainToast.showShortToast("SD卡不可用");
+                    break;
 
                 case ConstantLive.SD_CARD_SIZE_NOT_ENOUGH:
-                    MainToast.showShortToast( "SD卡空间不足");
-                break;
+                    MainToast.showShortToast("SD卡空间不足");
+                    break;
                 case ConstantLive.CAPTURE_FAILED_NPLAY_STATE:
-                    MainToast.showShortToast( "非播放状态不能抓拍");
-                break;
+                    MainToast.showShortToast("非播放状态不能抓拍");
+                    break;
             }
         }
     }
+
+    /**
+     * 获取登录设备mac地址
+     *
+     * @return
+     */
+    protected String getMac() {
+
+        WifiManager wifi = (WifiManager)getSystemService(Context.WIFI_SERVICE);
+        WifiInfo info = wifi.getConnectionInfo();
+        String macStr=null;
+        if(info!=null){
+            macStr= info.getMacAddress();
+        }
+        if (macStr == null) {
+            macStr = getUUID();
+        }
+        return macStr;
+
+
+//        WifiManager wm = (WifiManager) getSystemService(Context.WIFI_SERVICE);
+//        String mac = wm.getConnectionInfo().getMacAddress();
+//        return mac == null ? "" : mac;
+    }
+
+    public  String getUUID() {
+        String uuid = "";
+        synchronized (LiveActivity.class) {
+            final String androidId = Settings.Secure.getString(
+                    getContentResolver(), Settings.Secure.ANDROID_ID);
+            try {
+                if ((null != androidId)
+                        && !"9774d56d682e549c".equals(androidId)) {
+                    uuid = UUID.nameUUIDFromBytes(androidId.getBytes("utf8"))
+                            .toString();
+                } else {
+                    final String deviceId = ((TelephonyManager)
+                            getSystemService(Context.TELEPHONY_SERVICE))
+                            .getDeviceId();
+                    uuid = deviceId != null ? UUID.nameUUIDFromBytes(
+                            deviceId.getBytes("utf8")).toString() : UUID
+                            .randomUUID().toString();
+                }
+            } catch (UnsupportedEncodingException e) {
+                throw new RuntimeException(e);
+            }
+        }
+
+        return uuid;
+    }
+
+
 }
