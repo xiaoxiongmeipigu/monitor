@@ -1,4 +1,4 @@
-package com.zjhj.monitor.adapter.link;
+package com.zjhj.monitor.adapter.shops;
 
 import android.content.Context;
 import android.net.Uri;
@@ -8,7 +8,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.drawee.controller.BaseControllerListener;
@@ -29,20 +28,23 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 
 /**
- * Created by brain on 2017/5/25.
+ * Created by brain on 2017/7/4.
  */
-public class LinkAdapter extends RecyclerView.Adapter<LinkAdapter.ViewHolder> {
+public class ShopTypeAdapter extends RecyclerView.Adapter<ShopTypeAdapter.ViewHolder> {
+
     private LayoutInflater inflater;
     List<MapiResourceResult> mList;
     private RecyOnItemClickListener onItemClickListener;
+    Context mContext;
 
     public void setOnItemClickListener(RecyOnItemClickListener onItemClickListener) {
         this.onItemClickListener = onItemClickListener;
     }
 
-    public LinkAdapter(Context context, List<MapiResourceResult> list) {
+    public ShopTypeAdapter(Context context, List<MapiResourceResult> list) {
         inflater = LayoutInflater.from(context);
         mList = list;
+        mContext = context;
     }
 
     @Override
@@ -52,27 +54,26 @@ public class LinkAdapter extends RecyclerView.Adapter<LinkAdapter.ViewHolder> {
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new ViewHolder(inflater.inflate(R.layout.item_link, parent, false));
+        return new ViewHolder(inflater.inflate(R.layout.item_shop_type, parent, false));
     }
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
+
         holder.rootView.setTag(position);
         holder.rootView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (null != onItemClickListener)
+                if(null!=onItemClickListener)
                     onItemClickListener.onItemClick(view, (Integer) view.getTag());
             }
         });
 
         MapiResourceResult mapiResourceResult = mList.get(position);
-        holder.title.setText(TextUtils.isEmpty(mapiResourceResult.getName()) ? "" : mapiResourceResult.getName());
-
         //创建将要下载的图片的URI
-        Uri imageUri = Uri.parse(TextUtils.isEmpty(mapiResourceResult.getCover_pic())?"":mapiResourceResult.getCover_pic());
+        Uri imageUri = Uri.parse(TextUtils.isEmpty(mapiResourceResult.getIcon())?"":mapiResourceResult.getIcon());
         ImageRequest request = ImageRequestBuilder.newBuilderWithSource(imageUri)
-                .setResizeOptions(new ResizeOptions(DPUtil.dip2px(80), DPUtil.dip2px(80)))
+                .setResizeOptions(new ResizeOptions(DPUtil.dip2px(280), DPUtil.dip2px(61)))
                 .build();
         DraweeController controller = Fresco.newDraweeControllerBuilder()
                 .setImageRequest(request)
@@ -84,12 +85,11 @@ public class LinkAdapter extends RecyclerView.Adapter<LinkAdapter.ViewHolder> {
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
-        @Bind(R.id.root_view)
-        LinearLayout rootView;
-        @Bind(R.id.title)
-        TextView title;
         @Bind(R.id.image)
         SimpleDraweeView image;
+        @Bind(R.id.root_view)
+        LinearLayout rootView;
+
         public ViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);

@@ -9,41 +9,174 @@
         layout="@layout/lay_header"
         />
 
-
-    <com.zjhj.monitor.view.HomeSliderLayout
-        android:id="@+id/homeSliderLayout"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_below="@+id/lay_header"
-        ></com.zjhj.monitor.view.HomeSliderLayout>
-
-    <LinearLayout
+    <com.zjhj.monitor.widget.MyScrollview
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:layout_below="@+id/homeSliderLayout"
+        android:layout_below="@+id/lay_header"
         android:layout_above="@+id/bottom_ll"
         >
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="36dp"
-            android:text="最新动态"
-            android:textColor="@color/light_black"
-            android:textSize="@dimen/text_normal"
-            android:gravity="center_vertical"
-            android:paddingLeft="@dimen/margin_2"
-            android:background="@color/background_gray"
-            />
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/recyclerView"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:scrollbars="vertical"
-            ></android.support.v7.widget.RecyclerView>
+            android:orientation="vertical"
+            >
 
-    </LinearLayout>
+            <com.zjhj.monitor.view.HomeSliderLayout
+                android:id="@+id/homeSliderLayout"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                ></com.zjhj.monitor.view.HomeSliderLayout>
+
+            <LinearLayout
+                android:id="@+id/function_ll"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:orientation="horizontal"
+                >
+
+                <LinearLayout
+                    android:id="@+id/notice_ll"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    >
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@mipmap/notice_logo"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="公告公示"
+                        android:textColor="@color/shop_black"
+                        android:textSize="@dimen/text_normal"
+                        android:layout_marginTop="@dimen/margin_1"
+                        />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/consume_ll"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    >
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@mipmap/consume_logo"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="消费维权"
+                        android:textColor="@color/shop_black"
+                        android:textSize="@dimen/text_normal"
+                        android:layout_marginTop="@dimen/margin_1"
+                        />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/punish_ll"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    >
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@mipmap/punish_logo"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="处罚信息"
+                        android:textColor="@color/shop_black"
+                        android:textSize="@dimen/text_normal"
+                        android:layout_marginTop="@dimen/margin_1"
+                        />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/supervise_ll"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    >
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@mipmap/supervise_logo"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="监管动态"
+                        android:textColor="@color/shop_black"
+                        android:textSize="@dimen/text_normal"
+                        android:layout_marginTop="@dimen/margin_1"
+                        />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/policy_ll"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    >
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@mipmap/policy_logo"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="政策法规"
+                        android:textColor="@color/shop_black"
+                        android:textSize="@dimen/text_normal"
+                        android:layout_marginTop="@dimen/margin_1"
+                        />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                ></android.support.v7.widget.RecyclerView>
+
+        </LinearLayout>
+
+    </com.zjhj.monitor.widget.MyScrollview>
 
     <LinearLayout
         android:id="@+id/bottom_ll"

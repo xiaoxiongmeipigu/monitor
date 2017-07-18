@@ -87,9 +87,11 @@
             android:theme="@android:style/Theme.Light.NoTitleBar" />
         <activity
             android:name=".activity.InfoWindowActivity"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            />
-        <activity android:name=".activity.shops.FeedBackListActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize" />
+        <activity
+            android:name=".activity.shops.FeedBackListActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".activity.shops.ShopTypeActivity"
             android:screenOrientation="portrait"
             />
     </application>

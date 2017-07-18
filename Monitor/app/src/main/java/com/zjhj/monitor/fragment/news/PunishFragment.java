@@ -14,7 +14,6 @@ import android.view.ViewGroup;
 import com.zjhj.commom.api.ItemApi;
 import com.zjhj.commom.result.IndexData;
 import com.zjhj.commom.result.MapiItemResult;
-import com.zjhj.commom.result.MapiResourceResult;
 import com.zjhj.commom.util.RequestExceptionCallback;
 import com.zjhj.commom.util.RequestPageCallback;
 import com.zjhj.commom.widget.MainToast;
@@ -34,7 +33,7 @@ import butterknife.ButterKnife;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class NewsFragment extends BaseFrag {
+public class PunishFragment extends BaseFrag {
 
     @Bind(R.id.recyclerView)
     RecyclerView recyclerView;
@@ -50,7 +49,7 @@ public class NewsFragment extends BaseFrag {
     private Integer pageNum = 12;
     private Integer counts;
 
-    public NewsFragment() {
+    public PunishFragment() {
         // Required empty public constructor
     }
 
@@ -139,7 +138,7 @@ public class NewsFragment extends BaseFrag {
 
     public void load(){
         showLoading();
-        ItemApi.postlist(getActivity(), pageIndex + "", pageNum + "", "1", new RequestPageCallback<List<MapiItemResult>>() {
+        ItemApi.postlist(getActivity(), pageIndex + "", pageNum + "", "3", new RequestPageCallback<List<MapiItemResult>>() {
             @Override
             public void success(Integer isNext, List<MapiItemResult> success) {
                 hideLoading();

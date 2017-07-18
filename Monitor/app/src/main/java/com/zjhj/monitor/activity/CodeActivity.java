@@ -22,11 +22,16 @@ public class CodeActivity extends BaseActivity {
     @Bind(R.id.image)
     SimpleDraweeView image;
 
+    String code = "";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_code);
         ButterKnife.bind(this);
+        if(null!=getIntent()){
+            code = getIntent().getStringExtra("code");
+        }
         initView();
         initListener();
     }
@@ -35,7 +40,7 @@ public class CodeActivity extends BaseActivity {
         back.setImageResource(R.mipmap.back_white);
         center.setText("二维码");
 
-        image.setImageURI(Uri.parse("res:///" +R.drawable.code_download_logo));
+        image.setImageURI(Uri.parse(code));//Uri.parse("res:///" +R.drawable.code_download_logo)
 
     }
 

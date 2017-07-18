@@ -62,8 +62,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:singleLine="true"
-            android:text="抓拍" 
-            android:visibility="gone"
+            android:text="抓拍"
+            android:background="@color/shop_white"
             />
 
         <Button
@@ -73,7 +73,7 @@
             android:layout_weight="1"
             android:singleLine="true"
             android:text="录像"
-            android:visibility="gone"
+            android:background="@color/shop_white"
              />
 
         <Button

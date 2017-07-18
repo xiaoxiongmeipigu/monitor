@@ -64,6 +64,7 @@ public class ShopsActivity extends BaseActivity {
     ItemPopWindow addrPop;
     List<MapiResourceResult> addrsList;
     String addrId = "";
+    String cat_id = "";
 
     private Integer pageIndex = 1;
     private Integer pageNum = 12;
@@ -176,7 +177,7 @@ public class ShopsActivity extends BaseActivity {
                         addrCb.setText(addrsList.get(postion).getName());
                     } else {
                         addrId = addrsList.get(postion).getId();
-                        addrCb.setText("全部");
+                        addrCb.setText("区域");
                     }
                     refreshData();
                 }
@@ -195,14 +196,15 @@ public class ShopsActivity extends BaseActivity {
 
     private void loadAddr() {
         if (null != getIntent()) {
+            cat_id = getIntent().getStringExtra("cat_id");
             List<MapiResourceResult> list = (List<MapiResourceResult>) getIntent().getSerializableExtra("list");
             if (null != list && !list.isEmpty()) {
                 addrsList.clear();
-                addrsList.add(new MapiResourceResult("", "全部"));
+                addrsList.add(new MapiResourceResult("", "区域"));
                 addrsList.addAll(list);
 //                addrsList.addAll(JGJDataSource.getAddrs());
                 addrPop.refreshData(addrsList);
-                addrCb.setText("全部");
+                addrCb.setText("区域");
             }
 
         }
@@ -211,7 +213,7 @@ public class ShopsActivity extends BaseActivity {
     private void load() {
 
         showLoading();
-        ItemApi.merchantlist(this, pageIndex + "", pageNum + "", keyword, addrId, new RequestPageCallback<List<MapiItemResult>>() {
+        ItemApi.merchantlist(this, pageIndex + "", pageNum + "", keyword, addrId, cat_id,new RequestPageCallback<List<MapiItemResult>>() {
             @Override
             public void success(Integer isNext, List<MapiItemResult> success) {
                 hideLoading();

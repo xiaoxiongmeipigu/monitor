@@ -11,6 +11,7 @@ import android.provider.MediaStore;
 import com.zjhj.commom.R;
 
 import java.io.File;
+import java.io.IOException;
 
 /**
  * Created by brain on 16/6/1.
@@ -124,6 +125,51 @@ public class FileUtil {
         }
         return data;
 
+    }
+
+    /**
+     * 获取图片目录
+     *
+     * @return Pictrue dir path.
+     * @since V1.0
+     */
+    public static File getPictureDirPath() {
+        File SDFile = null;
+        File mIVMSFolder = null;
+        try {
+            SDFile = android.os.Environment.getExternalStorageDirectory();
+            String path = SDFile.getAbsolutePath() + File.separator + "HIKVISION";
+            mIVMSFolder = new File(path);
+            if ((null != mIVMSFolder) && (!mIVMSFolder.exists())) {
+                mIVMSFolder.mkdir();
+                mIVMSFolder.createNewFile();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return mIVMSFolder;
+    }
+
+    /**
+     * 获取录像目录
+     *
+     * @return Video dir path.
+     * @since V1.0
+     */
+    public static File getVideoDirPath() {
+        File SDFile = null;
+        File mIVMSFolder = null;
+        try {
+            SDFile = android.os.Environment.getExternalStorageDirectory();
+            mIVMSFolder = new File(SDFile.getAbsolutePath() + File.separator + "HIKVISION");
+            if ((null != mIVMSFolder) && (!mIVMSFolder.exists())) {
+                mIVMSFolder.mkdir();
+                mIVMSFolder.createNewFile();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return mIVMSFolder;
     }
 
 }

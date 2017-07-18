@@ -20,6 +20,7 @@ import com.zjhj.monitor.activity.shops.FeedBackListActivity;
 import com.zjhj.monitor.activity.shops.FeedbackActivity;
 import com.zjhj.monitor.activity.shops.ShopDescActivity;
 import com.zjhj.monitor.activity.shops.ShopDetailActivity;
+import com.zjhj.monitor.activity.shops.ShopTypeActivity;
 import com.zjhj.monitor.activity.shops.ShopsActivity;
 import com.zjhj.monitor.activity.webview.WebviewControlActivity;
 
@@ -62,9 +63,10 @@ public class ControllerUtil {
     /**
      * 市监动态
      */
-    public static void go2News() {
+    public static void go2News(int position) {
         Intent intent = new Intent(AppContext.getInstance(), NewsActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.putExtra("position",position);
         AppContext.getInstance().startActivity(intent);
     }
 
@@ -80,8 +82,19 @@ public class ControllerUtil {
     /**
      * 商家列表
      */
-    public static void go2Shops(ArrayList<MapiResourceResult> list) {
+    public static void go2Shops(ArrayList<MapiResourceResult> list,String cat_id) {
         Intent intent = new Intent(AppContext.getInstance(), ShopsActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.putExtra("list",list);
+        intent.putExtra("cat_id",cat_id);
+        AppContext.getInstance().startActivity(intent);
+    }
+
+    /**
+     * 商家分类
+     */
+    public static void go2ShopType(ArrayList<MapiResourceResult> list) {
+        Intent intent = new Intent(AppContext.getInstance(), ShopTypeActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         intent.putExtra("list",list);
         AppContext.getInstance().startActivity(intent);
@@ -133,9 +146,10 @@ public class ControllerUtil {
     /**
      * 二维码
      */
-    public static void go2Code() {
+    public static void go2Code(String qrcode) {
         Intent intent = new Intent(AppContext.getInstance(), CodeActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.putExtra("code",qrcode);
         AppContext.getInstance().startActivity(intent);
     }
 

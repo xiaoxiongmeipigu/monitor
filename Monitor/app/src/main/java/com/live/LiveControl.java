@@ -10,6 +10,9 @@ import org.MediaPlayer.PlayM4.Player;
 import org.MediaPlayer.PlayM4.Player.MPSystemTime;
 import org.MediaPlayer.PlayM4.PlayerCallBack.PlayerDisplayCB;
 
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.SystemClock;
 import android.util.Log;
 import android.view.SurfaceHolder;
@@ -109,13 +112,16 @@ public class LiveControl implements RtspClientCallback, PlayerDisplayCB {
     private String           mDeviceUserName  = "";
     private String           mDevicePassword  = "";
 
+    private Context mContext;
+
     /**
      * 构造函数
      * 
      * @param context
      */
-    public LiveControl() {
+    public LiveControl(Context context) {
         init();
+        this.mContext = context;
     }
 
     /**
@@ -520,6 +526,7 @@ public class LiveControl implements RtspClientCallback, PlayerDisplayCB {
             return false;
         }
         pictureBuffer = null;
+
         return true;
     }
 
@@ -641,6 +648,8 @@ public class LiveControl implements RtspClientCallback, PlayerDisplayCB {
             mPictureFile = null;
             return false;
         }
+        if(null!=mPictureFile&&mPictureFile.exists()&&mPictureFile.isFile())
+            mContext.sendBroadcast(new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, Uri.parse("file://" + mPictureFile.getPath())));
         return true;
     }
 
@@ -700,6 +709,7 @@ public class LiveControl implements RtspClientCallback, PlayerDisplayCB {
         mIsRecord = false;
 
         stopWriteStreamData();
+
     }
 
     /**
@@ -718,6 +728,8 @@ public class LiveControl implements RtspClientCallback, PlayerDisplayCB {
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
+            if(null!=mRecordFile&&mRecordFile.exists()&&mRecordFile.isFile())
+                mContext.sendBroadcast(new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, Uri.parse("file://" + mRecordFile.getPath())));
             mRecordFileOutputStream = null;
             mRecordFile = null;
         }
@@ -728,7 +740,6 @@ public class LiveControl implements RtspClientCallback, PlayerDisplayCB {
      * 
      * @param filePath 录像文件路径
      * @param fileName 录像文件名称
-     * @param isRpmPackage 是否启用转封装
      * @return true-启动录像成功，false-启动录像失败
      * @since V1.0
      */
@@ -901,8 +912,6 @@ public class LiveControl implements RtspClientCallback, PlayerDisplayCB {
      * 获取JPEG图片大小
      * 
      * @return JPEG图片的大小.
-     * @throws PlayerException
-     * @throws MediaPlayerException MediaPlayer 异常
      * @since V1.0
      */
     private int getPictureSize() {

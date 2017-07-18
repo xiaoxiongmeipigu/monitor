@@ -19,4 +19,5 @@ public class BasicApi {
     public static String postlist = "/post/list";
     public static String merchantfeedback = "/merchant/feedback";
     public static String merchantfeedbacklist = "/merchant/feedback-list";
+    public static String merchantcatlist = "/merchant/cat-list";
 }

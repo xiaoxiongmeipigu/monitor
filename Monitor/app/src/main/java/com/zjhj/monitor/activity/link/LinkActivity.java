@@ -1,6 +1,7 @@
 package com.zjhj.monitor.activity.link;
 
 import android.os.Bundle;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.OrientationHelper;
 import android.support.v7.widget.RecyclerView;
@@ -64,13 +65,13 @@ public class LinkActivity extends BaseActivity {
 
         mList = new ArrayList<>();
 
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
-        linearLayoutManager.setOrientation(OrientationHelper.VERTICAL);
+        GridLayoutManager manager = new GridLayoutManager(this,2);
+        recyclerView.setLayoutManager(manager);
+        //如果可以确定每个item的高度是固定的，设置这个选项可以提高性能
         recyclerView.setHasFixedSize(true);
-        recyclerView.addItemDecoration(new DividerListItemDecoration(this, OrientationHelper.HORIZONTAL, DPUtil.dip2px(0.5f), getResources().getColor(R.color.divider_line)));
-        recyclerView.setLayoutManager(linearLayoutManager);
         mAdapter = new LinkAdapter(this, mList);
         recyclerView.setAdapter(mAdapter);
+//        recyclerView.addItemDecoration(new DividerListItemDecoration(this, OrientationHelper.VERTICAL, DPUtil.dip2px(20f), getResources().getColor(R.color.shop_white)));
 
     }
 

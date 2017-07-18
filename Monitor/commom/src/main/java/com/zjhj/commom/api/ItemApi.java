@@ -92,7 +92,7 @@ public class ItemApi extends BasicApi{
      * @param exceptionCallback
      */
     public static void merchantlist(Activity activity, String page, String limit,String keyword,String street_id,
-                                final RequestPageCallback callback, final RequestExceptionCallback exceptionCallback){
+                                String cat_id,final RequestPageCallback callback, final RequestExceptionCallback exceptionCallback){
         Map<String,String> params = new HashMap<>();
         params.put("page",page);
         params.put("limit",limit);
@@ -100,6 +100,8 @@ public class ItemApi extends BasicApi{
             params.put("keyword",keyword);
         if(!TextUtils.isEmpty(street_id))
             params.put("street_id",street_id);
+        if(!TextUtils.isEmpty(cat_id))
+            params.put("cat_id",cat_id);
         MapiUtil.getInstance().call(activity,merchantlist,params,new MapiUtil.MapiSuccessResponse(){
             @Override
             public void success(JSONObject json) {
@@ -263,6 +265,29 @@ public class ItemApi extends BasicApi{
                     callback.success(count,result);
                 }
 
+            }
+        },new MapiUtil.MapiFailResponse(){
+            @Override
+            public void fail(Integer code, String failMessage) {
+                exceptionCallback.error(code,failMessage);
+            }
+        });
+    }
+
+    /**
+     * 商户分类列表
+     * @param activity
+     * @param callback
+     * @param exceptionCallback
+     */
+    public static void merchantcatlist(Activity activity,final RequestCallback callback, final RequestExceptionCallback exceptionCallback){
+        Map<String,String> params = new HashMap<>();
+        MapiUtil.getInstance().call(activity,merchantcatlist,params,new MapiUtil.MapiSuccessResponse(){
+            @Override
+            public void success(JSONObject json) {
+                DebugLog.i("json="+json);
+                List<MapiResourceResult> result = JSONArray.parseArray(json.getJSONObject("data").getJSONArray("list").toJSONString(),MapiResourceResult.class);
+                callback.success(result);
             }
         },new MapiUtil.MapiFailResponse(){
             @Override

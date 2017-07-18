@@ -34,14 +34,17 @@ import com.hikvision.vmsnetsdk.VMSNetSDK;
 import com.zjhj.commom.api.BasicApi;
 import com.zjhj.commom.result.MapiCameraResult;
 import com.zjhj.commom.util.DebugLog;
+import com.zjhj.commom.util.FileUtil;
 import com.zjhj.commom.widget.MainToast;
 import com.zjhj.monitor.R;
 import com.zjhj.monitor.base.BaseActivity;
 import com.zjhj.monitor.base.Constants;
 import com.zjhj.monitor.base.TempData;
+import com.zjhj.monitor.util.UtilAudioPlay;
 import com.zjhj.monitor.widget.MainAlertDialog;
 
 import java.io.UnsupportedEncodingException;
+import java.util.Random;
 import java.util.UUID;
 
 import butterknife.Bind;
@@ -213,10 +216,10 @@ public class LiveActivity extends BaseActivity implements OnClickListener, OnChe
             @Override
             public void run() {
                 handler.sendEmptyMessage(Constants.Login.SHOW_LOGIN_PROGRESS);
-                String servAddr = TempData.getIns().getLoginData().getIp();
-                String userName = TempData.getIns().getLoginData().getUsername().trim();
-                String password = TempData.getIns().getLoginData().getPassword().trim();
-                String lineID = TextUtils.isEmpty(TempData.getIns().getLoginData().getRoute_id())?"1":TempData.getIns().getLoginData().getRoute_id();
+                String servAddr = userSP.getUserBean().getIp();//TempData.getIns().getLoginData().getIp();
+                String userName = userSP.getUserBean().getUsername();//TempData.getIns().getLoginData().getUsername().trim();
+                String password = userSP.getUserBean().getPassword();//TempData.getIns().getLoginData().getPassword().trim();
+                String lineID = TextUtils.isEmpty(userSP.getUserBean().getRoute_id())?"1":userSP.getUserBean().getRoute_id();//TextUtils.isEmpty(TempData.getIns().getLoginData().getRoute_id())?"1":TempData.getIns().getLoginData().getRoute_id();
                 int lineIntId = Integer.parseInt(lineID);
 
 
@@ -262,7 +265,7 @@ public class LiveActivity extends BaseActivity implements OnClickListener, OnChe
      */
     private void initData() {
         mRealPlayURL = new RealPlayURL();
-        mLiveControl = new LiveControl();
+        mLiveControl = new LiveControl(this);
         mLiveControl.setLiveCallBack(this);
         mVmsNetSDK = VMSNetSDK.getInstance();
         if (mVmsNetSDK == null) {
@@ -468,7 +471,7 @@ public class LiveActivity extends BaseActivity implements OnClickListener, OnChe
     private String getPlayUrl(int streamType) {
         String url = "";
         // 登录平台地址
-        String mAddress = TempData.getIns().getLoginData().getIp();
+        String mAddress = userSP.getUserBean().getIp();//TempData.getIns().getLoginData().getIp();
         // 登录返回的sessiond
         String mSessionID = TempData.getIns().getUserData().sessionID;
         DebugLog.i("cameraResult.getCamera_id():"+cameraResult.getCamera_id()+",getDevice_id"+cameraResult.getDevice_id());
@@ -533,19 +536,19 @@ public class LiveActivity extends BaseActivity implements OnClickListener, OnChe
      * @since V1.0
      */
     private void captureBtnOnClick() {
-        /*if (null != mLiveControl) {
+        if (null != mLiveControl) {
             // 随即生成一个1到10000的数字，用于抓拍图片名称的一部分，区分图片，开发者可以根据实际情况修改区分图片名称的方法
             int recordIndex = new Random().nextInt(10000);
-            boolean ret = mLiveControl.capture(UtilFilePath.getPictureDirPath().getAbsolutePath(), "Picture"
+            boolean ret = mLiveControl.capture(FileUtil.getPictureDirPath().getAbsolutePath(), "Picture"
                     + recordIndex + ".jpg");
             if (ret) {
-                UIUtil.showToast(LiveActivity.this, "抓拍成功");
+                MainToast.showShortToast("抓拍成功");
                 UtilAudioPlay.playAudioFile(LiveActivity.this, R.raw.paizhao);
             } else {
-                UIUtil.showToast(LiveActivity.this, "抓拍失败");
-                DebugLog.error(TAG, "captureBtnOnClick():: 抓拍失败");
+                MainToast.showShortToast("抓拍失败");
+                DebugLog.e( "captureBtnOnClick():: 抓拍失败");
             }
-        }*/
+        }
     }
 
     /**
@@ -554,22 +557,22 @@ public class LiveActivity extends BaseActivity implements OnClickListener, OnChe
      * @since V1.0
      */
     private void recordBtnOnClick() {
-        /*if (null != mLiveControl) {
+        if (null != mLiveControl) {
             if (!mIsRecord) {
                 // 随即生成一个1到10000的数字，用于录像名称的一部分，区分图片，开发者可以根据实际情况修改区分录像名称的方法
                 int recordIndex = new Random().nextInt(10000);
-                mLiveControl.startRecord(UtilFilePath.getVideoDirPath().getAbsolutePath(), "Video" + recordIndex
+                mLiveControl.startRecord(FileUtil.getVideoDirPath().getAbsolutePath(), "Video" + recordIndex
                         + ".mp4");
                 mIsRecord = true;
-                UIUtil.showToast(LiveActivity.this, "启动录像成功");
+                MainToast.showShortToast("启动录像成功");
                 mRecordBtn.setText("停止录像");
             } else {
                 mLiveControl.stopRecord();
                 mIsRecord = false;
-                UIUtil.showToast(LiveActivity.this, "停止录像成功");
+                MainToast.showShortToast("停止录像成功");
                 mRecordBtn.setText("开始录像");
             }
-        }*/
+        }
     }
 
     /**

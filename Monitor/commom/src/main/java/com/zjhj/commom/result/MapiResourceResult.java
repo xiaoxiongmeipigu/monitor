@@ -1,6 +1,7 @@
 package com.zjhj.commom.result;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * Created by brain on 2016/7/22.
@@ -13,6 +14,42 @@ public class MapiResourceResult extends MapiBaseResult {
     private String title;
     private String pic_url;
     private String post_url;
+    private String cover_pic;
+    private String desc;
+    private List<MapiResourceResult> post_list;
+    private String icon;
+
+    public String getIcon() {
+        return icon;
+    }
+
+    public void setIcon(String icon) {
+        this.icon = icon;
+    }
+
+    public String getCover_pic() {
+        return cover_pic;
+    }
+
+    public void setCover_pic(String cover_pic) {
+        this.cover_pic = cover_pic;
+    }
+
+    public String getDesc() {
+        return desc;
+    }
+
+    public void setDesc(String desc) {
+        this.desc = desc;
+    }
+
+    public List<MapiResourceResult> getPost_list() {
+        return post_list;
+    }
+
+    public void setPost_list(List<MapiResourceResult> post_list) {
+        this.post_list = post_list;
+    }
 
     public String getPost_url() {
         return post_url;

@@ -12,7 +12,7 @@ public final class TempData {
     /**
      * 监控登录的临时数据
      */
-    private MapiUserResult loginData;
+//    private MapiUserResult loginData;
 
     /**
      * 登录返回的数据
@@ -35,11 +35,11 @@ public final class TempData {
         return ins;
     }
 
-    public MapiUserResult getLoginData() {
-        return loginData;
-    }
-
-    public void setLoginData(MapiUserResult loginData) {
-        this.loginData = loginData;
-    }
+//    public MapiUserResult getLoginData() {
+//        return loginData;
+//    }
+//
+//    public void setLoginData(MapiUserResult loginData) {
+//        this.loginData = loginData;
+//    }
 }
